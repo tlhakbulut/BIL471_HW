@@ -1,0 +1,202 @@
+{
+  "questions": [
+    "Öğrenci No",
+    "Text file ile binary file arasındaki fark nedir?",
+    "Bir dosyaya yazarken düzenli olarak flush yapmamak neye yol açabilir?",
+    "Binary bir dosyaya bir object yazdırırken bu objenin hangi interfaceyi implement etmesi gerekiyor?\nBu interfacenin metotlarını sıralayınız.\nBu interface functional veya marker bir interface midir?",
+    "Binary bir dosyaya primitive typeler (int, float, char etc.) yazılabilir mi, evet ise nasıl?",
+    "Buffered reader ve scanner sınıfları ile dosya okurken dosyanın sonuna geldiğini nasıl kontrol edilir?",
+    "Binary bir dosya okurken dosyanın sonuna gelindiği nasıl test edilir?",
+    "public class RandomAccessDemo {\n    public static void main(String[] args) throws Exception {\n        _______ f = new _______(\"numbers.bin\", \"____\");\n        f.writeInt(10);\n        f.writeInt(20);\n        int a = f.readInt();\n        f.seek(_____________);\n        int b = f.readInt();\n        System.out.println(a + b);\n        f.close();\n    }\n}\n\nBoşluklara sırasıyla ne gelmelidir?\nOutput?",
+    "public class Demo {\n    public static void main(String[] args) throws Exception {\n        FileOutputStream fos = new FileOutputStream(\"log.txt\", true);\n        ______________  pw = new ______________(fos);\n        pw.println(\"New log entry\");\n        pw.close();\n    }\n}\nBoşluklara sırasıyla ne gelmelidir?\n\nBu kod çalıştırıldığında log.txt dosyası nasıl etkilenir?"
+  ],
+  "answers": [
+    {
+      "id": "4856424",
+      "cevap1": "veri saklama şekilleri farklıdır",
+      "cevap2": "bilmiyorum ",
+      "cevap3": "bilmiyorum",
+      "cevap4": "fileoutputstream ve dataoutputstream sınıfları birlikte kullanılarak yazılabilir ",
+      "cevap5": "bilmiyorum ",
+      "cevap6": "bilmiyorum",
+      "cevap7": "bilmiyorum",
+      "cevap8": "bilmiyorum"
+    },
+    {
+      "id": "5187413",
+      "cevap1": "Text file editor tarafından okunurken binary file bilgisayar tarafından okunur ve 1 ve 0lardan oluşur",
+      "cevap2": "Data kaybına yol açabilir ",
+      "cevap3": "Functional bir interfacedir \n",
+      "cevap4": "Evet yazılabilir dosya bunları 1 ve 0lara çevirir",
+      "cevap5": "Buffered reader readLine metotu null döndürür read metotu ise -1 döndürür. Sacnner sınıfında ise hasnext metotu ile sona gelip gelinmedigi anlaşılabilir",
+      "cevap6": "--",
+      "cevap7": "--",
+      "cevap8": "PrintWriter\nPrintWriter\n\nlog.txt dosyasına New log entry yazılır"
+    },
+    {
+      "id": "5628146",
+      "cevap1": "Text file verileri okunabilir binary file ise bit olduğunda okunamaz özel dosya gerekli ",
+      "cevap2": "bufferda kalabilir bu da başka dosyaları okurken vs. veri kaybına eksikliğine sebep olabilir",
+      "cevap3": "serializable bu interfacein metodu yoktur market interfacedir",
+      "cevap4": "DataOutputStream ile yazılabilir yani evet",
+      "cevap5": "buffer reader null dönerse scanner için false dönerse",
+      "cevap6": "EOFException ile test edilebilir",
+      "cevap7": "RandomAccessFile RandomAccessFile rw 4 output 30",
+      "cevap8": "PrintWriter PrintWriter log.txt New log entry der her dosya açılışında "
+    },
+    {
+      "id": "5281670",
+      "cevap1": "text dosyaları insan tarafından okunabilir karakterler içerir, binary dosyalar ise makine tarafından okunabilen 0 ve 1lerden oluşan veri saklar.",
+      "cevap2": "veri kaybına yazma işlemi tamamlanmadan programın kapanması durumunda eksikliğe yol açabilir",
+      "cevap3": "Serializable interfacei metodu yoktur çünkü marker",
+      "cevap4": "evet DataOutputStream veya ObjectOutputStream kullanarak ",
+      "cevap5": "BufferedReader.readLine() ve Scanner.hasNext() metotları ile",
+      "cevap6": "--",
+      "cevap7": "RandomAccessFile , new RandomAccessFile(\"numbers.bin\", \"rw\") ,4\noutput 30    ",
+      "cevap8": "PrintWriter , PrintWriter(fos)\nNew log entry append edilir "
+    },
+    {
+      "id": "4779274",
+      "cevap1": "Text file dönüştürülmüş insanın açıp okuyabildiği iken binary file tüm verileri olduğu gibi bitler halinde yazar okunamaz göz ile",
+      "cevap2": "veri kaybına sebep olabilir, vatelite özelliğini tetikler",
+      "cevap3": "Serializable interfacesini implement etmeli, functionaldı",
+      "cevap4": "yazılsa da hepsi binary şekilde yazılır, ObjectInputStream ile yazdırırız",
+      "cevap5": "EOF vardı bitane, buffered olanda eksi 1 alıyor değer scannerde de has next line vs. var boolean",
+      "cevap6": "eof 😜",
+      "cevap7": "ObjectInputStream f = new ObjectInputStream .... TRUE gelmeli\nf.seek de 8 falan olmalı heehalde\noutput 30",
+      "cevap8": "PrintWriter gelmesi gerekmio mu ikisine ya"
+    },
+    {
+      "id": "5361565",
+      "cevap1": "text file insan tarafından okunabilir dosyadir. binary ise bilgisayarın okuyabileceği sekildeki dosyalardır.",
+      "cevap2": "yazmak istediğimiz her şeyi yazamayabiliriz yani en sondaki bir kisim yazilmadan kalabilir.",
+      "cevap3": "serializable interfaceini implement etmesi gerekir.\nherhangi bir methodu bulunmaz.\nmarker interfacedir.",
+      "cevap4": "evet yazilabilirler. data output stream ile yapabilirim.",
+      "cevap5": "scanner ile nextline()diyerek bunun bos olup olmadığına bakilir bufferedreaderda da aynı şekilde ",
+      "cevap6": "avaliable methodu ile test edilir.",
+      "cevap7": "printwriter  printwriter  a  4",
+      "cevap8": "sonuna New log entry yazılır."
+    },
+    {
+      "id": "9164612",
+      "cevap1": "Text file: İnsan tarafından okunabilir, karakter tabanlıdır.\nBinary file: Makine tarafından işlenir, byte düzeyinde veriler içerir.",
+      "cevap2": "Veri kaybına veya eksik yazılmasına neden olabilir, çünkü veri buffer’da tutulabilir.",
+      "cevap3": "Serializable",
+      "cevap4": "Evet. DataOutputStream kullanarak yazılabilir:",
+      "cevap5": " Buffered: readline() == null\nScanner: hasNext() == false ",
+      "cevap6": "DataInputStream.available() == 0 veya EOFException hatası alınması ile anlaşılır.",
+      "cevap7": "RandomAccessFile f = new RandomAccessFile(\"numbers.bin\", \"rw\");\nSeekteki boşluk = 0\nOutput: 30\n",
+      "cevap8": "PrintWriter pw = new PrintWriter\nDosyanın sonuna new log entry eklenir"
+    },
+    {
+      "id": "8059049",
+      "cevap1": "Binary file ham veri içerir(insanın okuyamayacağı).",
+      "cevap2": "Flush yazma işlemini tamamlamaya sistemi zorlar,bufferda kalmadığımızdan emin olur.Yani flush yapmamak bufferda kalmaya yol açabilir",
+      "cevap3": "Serializable interface i.Marker bir interfacedir yani metod içermez",
+      "cevap4": "Evet yazılır,objectOutputStream ile.",
+      "cevap5": "Buffered nükleer scanner false döner",
+      "cevap6": "EOFE(End of File) Exception ",
+      "cevap7": "RandomAccessFile,RandimAccessFile,4\nOutput:30",
+      "cevap8": "Printwriter, Printwriter,dosyayı açınca New log entry yazısını görürüz"
+    },
+    {
+      "id": "2103960",
+      "cevap1": "Text file insanların okuyabileceği şekilde veriyi saklar, binary bilgisayarın okuması için daha uygun",
+      "cevap2": "Beklenmeyen bir şekilde program kapatılırsa verilerin kaybolmasına sebep olur",
+      "cevap3": " Functional ",
+      "cevap4": " Evet ",
+      "cevap5": "hasnext() metodları ile kontrol edilebilir",
+      "cevap6": " ",
+      "cevap7": "FileOutputStream  FileOutputStream.   True  ?",
+      "cevap8": " PrintWriter printWrite. new log entry"
+    },
+    {
+      "id": "4114373",
+      "cevap1": "Text file direkt string şekilde yazarken binary file byte byte yazar.",
+      "cevap2": "Buffer'ın kapanmamasına sebep olur",
+      "cevap3": "-",
+      "cevap4": "4byte'lık verilerle yazılabilir.",
+      "cevap5": "hasNext() metoduyla, false döndürürse dosya bitmiştir",
+      "cevap6": "-",
+      "cevap7": "RandomAccessFile, RandomAccessFile, true, 4, Output: 30",
+      "cevap8": "PrintWriter, PrintWriter, log.txt: New log entry"
+    },
+    {
+      "id": "7374887",
+      "cevap1": "Text file da insanların okuyabileceği karakterler varken binary dosyaları sadece 01 lerden oluşur",
+      "cevap2": "Yazdığımız verinin yarıda kalmasına veya karışmasına yol açabilir.",
+      "cevap3": "Serializable marker interface i olduğundan methodu yoktur.",
+      "cevap4": "Yazılabilir.writeInt() vb metotlarla.",
+      "cevap5": "Scannerda hasNext() metodu.",
+      "cevap6": "-",
+      "cevap7": "RandomAccessFile,RandomAccessFile,rw,5\nOutput:30",
+      "cevap8": "PrintStream,PrintStream \nDosyanın sonuna New log entry yazılır."
+    },
+    {
+      "id": "6539697",
+      "cevap1": "binary file insan okumasına uygun değildir ancak bilgisayar için daha verimlidir",
+      "cevap2": "verilerin dosyaya yazılmamasına sebep olabilir",
+      "cevap3": "Serializable\nmarker interface",
+      "cevap4": "binary karşılıklarına çevrilerek yazılabilirler",
+      "cevap5": "hasNext()",
+      "cevap6": "available()",
+      "cevap7": "RandomAccessFile\nRandomAccessFile\nrw\n4\n30",
+      "cevap8": "PrintWriter\nPrintWriter\nlog.txt dosyasına 'New log entry' yazılır."
+    },
+    {
+      "id": "6157698",
+      "cevap1": "Text file okunurken karakter olarak okunurken\nBinaryde ise byte'lar halindedir ve processi hızlı, kapladığı alan daha azdır. ",
+      "cevap2": "Bufferda kalan outputun dosyaya yazılmamasına",
+      "cevap3": "Serializable interface'ini implement etmesi gerekir. Metodu yoktur. Marker interface'dir",
+      "cevap4": "Evet.",
+      "cevap5": "Buffer'ın içinde karakter yoksa.",
+      "cevap6": ".",
+      "cevap7": "RandomAccessFile\nRandomAccessFile\nrw\n4\n\n30",
+      "cevap8": "PrintWriter\nPrintWriter\n\nİçine New log entry yazdırlır"
+    },
+    {
+      "id": "1280995",
+      "cevap1": "text dosyaları kullanılan text encoding türüne göre karakterleri depolar, yazılan her şey bir karakterdir. binary file'larda her şey kendi tipinde en primitive şekilde saklanır. ",
+      "cevap2": "resource'larımızın boşa harcanmasına.",
+      "cevap3": "Bir şey-able. Unuttum kelimeyi. Marker interface görevi görüyor, yazdırılabilen objelere vermek istediğimiz bir işaretçi,çünkü sadece bu objeler yazdırılabilir.",
+      "cevap4": "evet. Örneğin randomaccessfile class'ının write metodları ile. ",
+      "cevap5": "isnext() metoduyla. ",
+      "cevap6": "dosya length'ine ulaşıp ulaşmamamız ile. ",
+      "cevap7": "RandomAccessFile, RandomAccessFile, rw, 5 gelmelidir. Output \"30\".",
+      "cevap8": "PrintWriter gelmelidir. log.txt'nin sonuna \"New long entry\" ve new line eklenir."
+    },
+    {
+      "id": "8857652",
+      "cevap1": "Text file insan tarafından okunabilir binary ise bilgisayar tarafından okunmak için tasarlanmıştır (evrensel) bu şekilde veriyi başka şeylere dönüştürmeye gerek kalmaz.",
+      "cevap2": "Gereksiz veri birikimi. İslem yaparken karışıkliklar. Yer kaplar ayrıca.",
+      "cevap3": "Serializable interface'i \nMarker \n(Marker oldugu için metot icermez diye dusundum)",
+      "cevap4": "Evet kendi dilinde yazilabilir.\nRandom access kullanarak da olur",
+      "cevap5": "hasNext kullanırız ya da while loop ",
+      "cevap6": "File.length metodunu kullanabiliriz ",
+      "cevap7": "RandomAccessFile\nRandomAccessFile\nrw\n0 \nOutput : 30",
+      "cevap8": "PrintWriter\nPrintWriter\n\nAppend edilir bastan yazmayiz dosyayi (true parametresinden dolayi)\nNew log entry"
+    },
+    {
+      "id": "7732416",
+      "cevap1": "Text file human readable. Binary file ikilik sistemde yazılı dosya. Complex data ve büyük datalar için daha uygun ",
+      "cevap2": "Datanın kaybolması önceden kalmış datanın güncel olanla karışması ",
+      "cevap3": "Serializable interface i implement etmesi gerekiyor marker bir interface olduğu için metodu yoktur",
+      "cevap4": "Yazabilir. Ascıı representationına çevrilerek yapılabilir.",
+      "cevap5": "HasNext metodları ile ",
+      "cevap6": "HasNext metodlarıyla ",
+      "cevap7": "RandomAccessFile RandomAccessFile “rw” 8",
+      "cevap8": "PrintWriter PrintWriter. Dosyanın devamına New log entry yazılır"
+    },
+    {
+      "id": "2384475",
+      "cevap1": "Text file primitive typelar ile olur. Binary file ascii değerleri ile olur. Binary file daha az yer kaplar ve daha hızlıdır.",
+      "cevap2": "Flush verilerin çıktı dosyasına yazdırılmasını zorlar. Flush edilmezse veri kaybı olabilir.",
+      "cevap3": "Serializable ı implement eder. İçi boş bir interfacedir. Methodu yoktur. Marker interfacedir.",
+      "cevap4": "Evet. Out.writeInt Out.writeChar gibi methodlarla yazılır.",
+      "cevap5": ".next methodu ile kontrol eder.",
+      "cevap6": "Avaliable ile kontrol eder.",
+      "cevap7": "RandomAccessFile\nRandomAccessFile\nrw\na\n10",
+      "cevap8": "PrintWriter\nPrintWriter\nVar olanın üstüne \"New log entry\" ekler."
+    }
+  ]
+}

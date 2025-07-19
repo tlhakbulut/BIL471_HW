@@ -1,0 +1,164 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "Map ve Set veri yapılarını kıyaslayınız, aralarındaki farkları açıklayınız.",
+    "Collections interfacesindeki metotlar temel olarak hangi işlevleri yerine getiriyor?",
+    "İki objenin equals metodu true dönüyorsa bu iki objenin hash codeleri aynıdır, bunun nedenini açıklayınız; eğer bu sağlanmazsa hangi veri yapıları istenilen şekilde sağlanır? Kendi yazdığınız classlarda bunu sağlamak için hangi metotları override etmelisiniz, neden?",
+    "Bir öğrenci kulübü, yılsonu etkinliği için sınırlı kontenjana sahip bir kayıt sistemi oluşturuyor. Sistem, öğrenci kayıtlarını \"ilk gelen ilk hizmet alır\" prensibiyle yönetiyor. Ancak, bazı öğrenciler kaydını iptal edebiliyor ve boş kalan yerler otomatik olarak sıradaki öğrenciye veriliyor. Bu senaryoda, kayıt sırasını ve iptal durumlarını etkin bir şekilde yönetebilmek için hangi veri yapısını tercih edersiniz? Neden?",
+    "FIFO nedir, açıklayınız ve aşağıdakı veri yapılarını FIFO/LIFO şeklinde sınıflandırınız:\nStack\nQueue\nMap\nPriorityQueue",
+    "public class Main {\n    public static void main(String[] args) {\n        Map<String, Integer> scores = new HashMap<>();\n        scores.put(\"Alice\", 95);\n        scores.put(\"Bob\", 80);\n        scores.put(\"Alice\", 100);\n\n        Set<String> keys = scores.keySet();\n        int sum = 0;\n\n        for (String key : keys) {\n            sum += scores.get(key);\n        }\n\n        System.out.println(\"Number of entries: \" + scores.size());\n        System.out.println(\"Sum of scores: \" + sum);\n    }\n}\n\nOutput?",
+    "public class Main {\n    public static void main(String[] args) {\n        List<String> list = new ArrayList<>();\n        list.add(\"Apple\");\n        list.add(\"Banana\");\n        list.add(1, \"Cherry\");\n        list.remove(\"Banana\");\n        list.add(\"Apple\");\n\n        System.out.println(list.size());\n        System.out.println(list.indexOf(\"Apple\") + \" \" + list.lastIndexOf(\"Apple\"));\n    }\n}\n\nOutput?"
+  ],
+  "answers": [
+    {
+      "id": "2384475",
+      "cevap1": ". ",
+      "cevap2": ".",
+      "cevap3": ".",
+      "cevap4": "LinkedList\nSıralı olarak ilerliyor ve çıkanın yerini bir sonraki alıyor.",
+      "cevap5": ".",
+      "cevap6": "Number of entries: 2\nSum of scores: 180",
+      "cevap7": "0 2"
+    },
+    {
+      "id": "6914659",
+      "cevap1": "Set, elemanlarının sırasını saklamaz veya belirli bir düzene göre sıralayabilir (TreeSet). Map ise anahtarların sırasını değiştirebilir veya belirli bir düzene sokabilir (TreeMap).",
+      "cevap2": "Ekle sil ara dönüştür manipülasyon ",
+      "cevap3": "HashMap veya HashSet içinde aynı nesneler farklı hash kodlarına sahip olursa, veri yapısı gereksiz yere daha fazla alan kullanır ve arama ekleme performansı düşebilir. Override edilmesi gerek metodlar: equals(): iki nesnenin eşit olup olmadığını anlamak için. hashCode(): eşit nesnelerin aynı hash koduna sahip olmasını sağlamak için.",
+      "cevap4": "\"ilk gelen ilk hizmet alır\" Yani FIFO prensibi uygulandığı için Queue (Kuyruk) veri yapısı en uygun seçimdir.",
+      "cevap5": "FIFO: first on first out demektir yani ilk giren ilk çıkar. \nStack: LIFO\nQueue: FIFO\nMap: ikisi de değil \nPriorityQueue: FIFO",
+      "cevap6": "Number of entries: 2  \nSum of scores: 180  ",
+      "cevap7": "3  \n0 2 "
+    },
+    {
+      "id": "5187413",
+      "cevap1": "--",
+      "cevap2": "Listelere ekleme eksiltme boyunu döndürme ve iterasyona aktarma",
+      "cevap3": "Hashcode objeleri tutan referanstir aynı referans iki objeyi tutabilir. Equals metodu override edilmelidir.",
+      "cevap4": "Bu örnek bankada sıra bekleyen insanlara benziyor bu yuzden setler bu durumda kullanilabilir",
+      "cevap5": "--",
+      "cevap6": "3 275",
+      "cevap7": "0 0"
+    },
+    {
+      "id": "5628146",
+      "cevap1": "set tekrarsız öğeleri saklar map key value şeklinde saklar ",
+      "cevap2": "öge ekleme çıkarma içeriyor mu diye kontrol etme temizleme boş olup olmadığını kontrol etme",
+      "cevap3": "hashnap önce hasshcode değerini kontrol eder ardından equalsı kontrol eder yani aynı nesnenin 2 kere saklanmasını önler",
+      "cevap4": "queue çünkü first in first outa uygun",
+      "cevap5": "fifo first in first out lifo last in first out , fifo olanlar queue lifo olan stack diğer ikisi ikiside değil",
+      "cevap6": "Number of entries: 2\nSum of scores: 180",
+      "cevap7": "3\n 0 2"
+    },
+    {
+      "id": "6539697",
+      "cevap1": "map'te key-value ilişkisi var, set'te ise belli bir sıraya göre diziliyor",
+      "cevap2": "ekle,çıkar,sizeını al,elemanını al,indexini al vs.",
+      "cevap3": "-",
+      "cevap4": "queue kullanırım çünkü ilk gelen ilk hizmet alıyor yani ilk gelen sıranın en önünde olurken yeni gelenler sıranın sonuna ekleniyor.",
+      "cevap5": "FIFO= first in first out (ilk giren ilk çıkar), LIFO = last in first out (son giren ilk çıkar),\nstack -> LIFO\nqueue -> FIFO\nmap -> FIFO\npriority queue -> LIFO",
+      "cevap6": "Number of entries: 3\nSum of scores: 275",
+      "cevap7": "3\n0 2"
+    },
+    {
+      "id": "8059049",
+      "cevap1": "Set eşsiz elemanları saklar",
+      "cevap2": "Eleman ekleme,saklama,indeks dönme gibi işlevler",
+      "cevap3": "Evet çünkü hashcode a bakar, bu da çakışmaya yol açar. Bunu önlemek için override etmeliyiz.",
+      "cevap4": "Queue,en son ekleyip en başta çıkardığı için",
+      "cevap5": "Queue\nPriorityQueue FIFO\nMap\nStack LIFO",
+      "cevap6": "Number of Entries:2\nSum of scores:180",
+      "cevap7": "3\n0 2"
+    },
+    {
+      "id": "6157698",
+      "cevap1": "Set içinde bir verinin sadece bir kere bukunabileceği bir veri grubudur. Map içinde key ve value şeklinde veri çiftlerinin bukunduğu veri grubudur.",
+      "cevap2": "Veri ekleme çıkarma veri grubunun boyutuna bakma gibi basit olanları",
+      "cevap3": "hashcode ve equals",
+      "cevap4": "Linkedlist çünkü listenin içinde sürekli veri çıkarıp koymam gerekiyor.",
+      "cevap5": "FIFO first in first out anlamına gelir ve en son eklenen verinin en başa eklendiğini ve veri çıkarırken ilk o veriyi çıkaracağını belirtir. \nLIFO last şn first out anlamına gelir ve en son eklenen verinin en sona eklendiğini ve veri çıkarırken en baştaki verinin çıkarılacağını belirtir.\nSTACK FIFO.\nQUEUE LIFO",
+      "cevap6": "2\n180",
+      "cevap7": "3\n02"
+    },
+    {
+      "id": "2103960",
+      "cevap1": "Set sırası olmayan veri grupları mapin key ve value değerleri var",
+      "cevap2": "Add remove",
+      "cevap3": " ",
+      "cevap4": "Queue Linkedlist",
+      "cevap5": "First in first out ilk girilen ilk işlemden geçer queue priority queue,  Lifo ise stack map",
+      "cevap6": "Num of entries 2.  Sum of scores 180",
+      "cevap7": " 3 0 2"
+    },
+    {
+      "id": "9245287",
+      "cevap1": "Set yapısında aynı değerdeki elemanlar bulunamaz\nMap ise ikili olarak yani key ve value olarak eleman çiftleri pair tutar\n",
+      "cevap2": ".add() ile eleman ekleniyor \n.size() ile uzunluğu bulunuyor ",
+      "cevap3": "Cunku object classindaki .equals() metodu objeleri hash codelarina gore kiyasliyor. Kendi yazdığımız classlarsa .equals() metodu override edilmeli",
+      "cevap4": "FIFO yani kayit sırası için queue kullanilir. Çünkü queuda ilk giren ilk çıkar.",
+      "cevap5": "FIFO first in first out yani ilk giren ilk cikar.\nStack=LIFO\nQueue=FIFO\nPriorityQueue öncelik sırasına göre tutar ne fifo ne lifo \nMap key ve valuelara göre tutar ne fifo ne lifi",
+      "cevap6": "Number of entries: 3\nSum of scores: 275",
+      "cevap7": "3\n0 2"
+    },
+    {
+      "id": "9905145",
+      "cevap1": "mapte birbirlerine bağlıyoruz, sette ise array gibi birbiri ucuna ekliyoruz bir seyi cagirmak icin bagli olduğunu cagirmamiz gerekiyor",
+      "cevap2": "sort gibi toplu yapilmasi gereken islemleri metot halinde tanimliyor ve bu islerimleri yerine getiriyor",
+      "cevap3": "objelerin tuttugu adres degerleri ayni oldugu icin hash codelari ayni olur. compareTo metodunu override etmemiz gerekli",
+      "cevap4": "ilk gelen ilk hizmet alir icin yani kayıt sırası için queue ve aralardaki değerleri silip yenisini eklemek icin arraylist kullanırım",
+      "cevap5": "first in first out= ilk giren ilk çikar\nstack, lifo\nqueue, fifo\nmap, bu şekilde kisitlanamaz\npriorityqueue, fifo",
+      "cevap6": "Number of entries: 3\nSum of scores: 275",
+      "cevap7": "list.add(1,\"Cherry\");\nsatirinda kod hata verir çünkü 2 adet değişken atamaya çalışıyor ve bu degiskenlerden biri int"
+    },
+    {
+      "id": "1280995",
+      "cevap1": "Set her elemandan bir tane bulunan, yani unique olduğu bir liste türüdür, map ise anahtar değerler kullanılarak birbirlerine bağlı verilerden birine ulaşmamızı sağlayan bir veri yapısıdır. ",
+      "cevap2": "Elemanlarla alakalı işlevler, ekleme, çıkarma, yer değiştirme, boyutunu alma, içinde belli bir eleman var mı kontrol etme vb.",
+      "cevap3": " ",
+      "cevap4": "Fark etmez. ",
+      "cevap5": " Stack ve Map LIFO, Queue ve Priority Queue LIFO. ",
+      "cevap6": "Number of entries: 3\nSum of scores: 275",
+      "cevap7": "0 2"
+    },
+    {
+      "id": "1889298",
+      "cevap1": "Mapte her öge bir anahtar değerle bağlıyken setlerde her bir öge bir kere yer alabilirken indexlere bağlıdır.",
+      "cevap2": "List,set,map ve queuelar için ortak metodlar sağlıyor.\n",
+      "cevap3": "İki objenin equals metodu true dönüyorsa bu iki objenin hash codeları aynı olmalıdır çünkü eğer bu durum sağlanmazsa hash tabanlı veri yapılarında çakışmalar oluşabilir.Hash tabanlı olmayan veri yapıları bundan etkilenmez.hash code metofunu da override etmeliyiz.",
+      "cevap4": "LinkedList tercih ederim çünkü linkedlistlerde ilk değeri çıkarınca geriye kalan değerler birbirine bağlı olduğundan daha az sıkıntı yaşarız.",
+      "cevap5": "-",
+      "cevap6": "Number of entries: 2\nSum of scores: 180",
+      "cevap7": "3\n02"
+    },
+    {
+      "id": "5361565",
+      "cevap1": "sette aynı elemandan iki tane bulunamaz. mapte ise verilerle eslesen keyler vardir.ama bu keyler birbirinden farklı olmali yani bir keyde birden fazla eleman olamaz.",
+      "cevap2": "sort yapmada isimize yariyor eleman eklerken veya silerken isimize yariyor.",
+      "cevap3": "hashmap hashset ve hashtable olduğu için bunu doner.",
+      "cevap4": "öncelikle ilk gelen ilk hizmet alır prensibi olduğu için queue tercih etmek mantık olacaktir. kayıt yapılırken sıradaki için hemen yer acilir ve silinince de kayar.",
+      "cevap5": "First in First out.stack FIFO. queue LIFO. Map ve priorityqueue bunlardan degildir.",
+      "cevap6": "Number of entries: 3\nSum of scores:275",
+      "cevap7": "3\n0 2"
+    },
+    {
+      "id": "3688139",
+      "cevap1": "Set benzersiz elemanlar tutarken mapte elemanlar tekrarlayabilir. May anahtar-obje mantigine gore calisir set direkt eleman bazinda erisim saglar.",
+      "cevap2": "Koleksiyona eleman ekleyip cikarma, barindirdigina bakma kisaca koleksiyon yapisi ile ilgili islem yapabilmeyi saglar.",
+      "cevap3": ".",
+      "cevap4": "Bu fifo prensibine uygundur. Queue tercih ederim cunku fifo seklinde saklar, verimli ekleme silme islemi saglar",
+      "cevap5": "Fifo first in first out\nilk eklenen elemanin ilk cikarilmasidir\nLifo last in first out\nlifo ise son eklenen ogenin ilk cikarilmasidir.\nStack lifo\nQueue fifo\nmap ikiside degil\npriorityqueue fifo",
+      "cevap6": "Number of entries 2\nSum of scores 180",
+      "cevap7": "0 2"
+    },
+    {
+      "id": "7374887",
+      "cevap1": "Sette bir elemandan sadece bir tanesi olabilir kopyası olamaz.Mapte ise elemanlara key adı verilen değerler atanır.Mapler arama işlrminin yüksek olduğu setler ise her verinin tek olduğu senaryoda işe yarar.",
+      "cevap2": "Collections ta bir elemanın olup olmadığına bakmak collectiona eleman eklemek",
+      "cevap3": "Hash code objelerin referansı yerine kendileri ile ilgili bilgilerden oluştuğundan eğer equals true ise hash codeları aynı olur.",
+      "cevap4": "Queue kullanılailir.queue veri yapısı ilk gelen ilk hizmet alır mantığıyla çalıştığı için kullanılabilir.",
+      "cevap5": "Fifo ilk gelen elemanın listenin en başımda olduğu ve yapılan işlemin önce ilk elemana yapılacağı anlamına gelmektedir. Stack lifo,queue fifo,",
+      "cevap6": "Number of entries:3\nSum of scores: 180",
+      "cevap7": "3 \n0 2\n"
+    }
+  ]
+}

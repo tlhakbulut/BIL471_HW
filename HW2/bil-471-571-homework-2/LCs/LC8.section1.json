@@ -1,0 +1,158 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "What grade (A, B, C, D, or F) do you expect to earn by the end of this course? ",
+    "Java'da Generic kavramı nedir, bu kavramın temel amacı nedir?",
+    "Bir wildcard'ı ne zaman sınırlamaya ihtiyaç duyarsınız, sınırlandığı ve sınırlanmadığı durumlar için birer örnek veriniz. Boundları hangi keywordlerle ifade edersiniz?",
+    "Jenerik olmayan bir class jenerik bir metot içerebilir mi? Açıklayınız.",
+    "MyGenericClass<Integer> ve MyGenericClass<Number> classları arasında kalıtım(child-parent) ilişkisi nasıldır, açıklayınız.",
+    "class Node<T>{\n    T[] data = new T[10];\n}\n//PSVM\nNode<String> stringnode = new Node<>();\n\nBu kodda bir hata var mı? (Varsa) Bu hata nedir, nedenini açıklayınız. (Varsa) Bu hata nasıl düzeltilmeli, kodun doğru halini yazınız.\n",
+    "public _____________ {\n    double sum = 0.0;\n    for (T item : list) {\n        sum += item.doubleValue();\n    }\n    return sum / list.size();\n}\n\npublic static void main(String[] args) {\n    List<Integer> integers = Arrays.asList(1, 2, 3, 4);\n    List<Double> doubles = Arrays.asList(1.5, 2.5, 3.5);\n    Main m = new Main();\n    System.out.println(average(integers));\n    System.out.println(average(doubles));\n}\n\nYukarıda boşluk bırakılan yeri doldurun.\nNot: metodun jenerik olduğuna, çağırılma biçimine ve jenerik tipine dikkat edin!\nBoşluğu doldurduktan sonra programın çıktısı ne olur?",
+    "Aşağıda tanımı verilmiş Node classının birbirlerine bağlanmış nodelerinden ilkini alan ve hepsini 1 defa sağa kaydıran metodu nasıl yazardınız, stratejiniz ne olurdu? Peki ya N defa sağa kaydırma işlemini nasıl yapardınız? N defa kaydırma çözümünüz sizce optimal olan çözüm mü, neden?\n\nÖrnek:\nBaşlangıçta: A -> B -> C\nmetodu A ile çağırdığıktan sonra: C -> A -> B\nAyrıca metot en başa gelen Nodeyi dönmelidir (bu örnekte C dönmeli).\n\nclass Node{\n    int data;\n    Node next;\n}\n\nstatic Node rotate(Node head){...}"
+  ],
+  "answers": [
+    {
+      "id": "6275288",
+      "cevap1": "CC",
+      "cevap2": "Genericler ile tip belirlemesi kullanıcıya bırakılır. Her inputa göre çalışabilen metodlar ve classlar yazmamızı sağlar. Spesifik olarak yazdığımızda fazla kod oluşacağından bu spesifikliğe olan ihtiyacı kaldırır. ",
+      "cevap3": "Kullanmak istediğimiz referans tipleri kategori halinde ise sınırlarız.?  super Class ve ?  extend Class",
+      "cevap4": "İçerebilir statik metod ise. ",
+      "cevap5": "Yoktur",
+      "cevap6": "Array initialize edilemez. Arrayin constructorda halledilmesi lazımdı. T[] data; kodun doğru hali",
+      "cevap7": "Arrays. asList(?  extends Number)  extends List",
+      "cevap8": "Yapamazdım"
+    },
+    {
+      "id": "4380745",
+      "cevap1": "AA",
+      "cevap2": "Bir sınıf başka sınıflara göre değişmesi gerekiyorsa diye var olan bir özellik",
+      "cevap3": "Sayılarla işlem yapılacaksa string gibi class’ların eklenmemesi gibi durumlarda kullanılır. extends ve super ile kısıtlama yapılır",
+      "cevap4": "İçerebilir ancak metodun generic olduğunu belirtmek gerekebilir",
+      "cevap5": "Number integer’ın üst class’ı olduğundan dolayı integer’lar number generic’e yazılabilir.",
+      "cevap6": "Generic sınıfınfan nesne üretilemez.",
+      "cevap7": "static <T> int average(T[] list)",
+      "cevap8": "Her seferinde o nesnenin sağına kendisini sağının sağına kendisini derken recursive bir algortima yazardım. Ve n zaman en iyi zamandır bu node yapısı için."
+    },
+    {
+      "id": "9830856",
+      "cevap1": "DD",
+      "cevap2": "Kendi listlerimizi oluşturup ortak noktada birleşen typea göre bir formatta saklamak",
+      "cevap3": "Wildcard kullanırken sınırlandırma ihtiyacı tür güvenliğini sağlamak veya belirli türlerle işlem yapmak çin ortaya çıkar",
+      "cevap4": "evet içerebilir bağımsız jenerik tür parametre alan metotlar tanımlanabilir",
+      "cevap5": "kalıtım ilişkisi yoktur",
+      "cevap6": "hata bulamadım ",
+      "cevap7": "List <T>\n2\n2.5",
+      "cevap8": "bilemedim"
+    },
+    {
+      "id": "4731282",
+      "cevap1": "CC",
+      "cevap2": "bir obje, metod returnı vb. için ortak ve genel bir reference type belirlemek için genericler kullanılır.",
+      "cevap3": "mesela bir item classından extendlenen armor ve weapon classları varsa sınırı bunlarla belirlemek için ? extends item yazılabilir. lower bound için ? super Class yazılır.",
+      "cevap4": "Jenerik metodun jenerik kısmı classta declare edilmediği için böyle bir kullanım söz konusu değildir.",
+      "cevap5": "ikisi de MyGenericClass'tır, içindeki jenerik declarationu akrabalık ifade etmez.",
+      "cevap6": "Hata yoktur",
+      "cevap7": "boşluk: average(List<? extends Number> list)\nçıktı:\n5\n3.75",
+      "cevap8": "head i alarak sadece sonuncu nodeu heade bağlardım çünkü kalanların bağlandığı yerler aynı kalıyor. N defa kaydırmak için her seferinde eski sonuncuyu yeni head yapan ve N defa dönen bir for döngüsü kullanılabilir."
+    },
+    {
+      "id": "7214465",
+      "cevap1": "CC",
+      "cevap2": "Generics farklı veri türleriyle çalışabilen tür güvenliğini koruyan bir yapıdır. Amacı, derleme zamanında kontrol yaparak hataları önlemek ve kod tekrarını azaltarak kullanılabilir kod yazmaktır.",
+      "cevap3": "üst sınıf keyword extend alt sınıf keyword super ",
+      "cevap4": "evet jenerik olmayan bir class parametre olarak tür alan jenerik bir metot içerebilir.",
+      "cevap5": "kalıtım ilişkisi yoktur çünkü jenarik türler kovaryant değildir.",
+      "cevap6": "hata var jenerik türlerden direkt olarak dizi oluşturulamaz object dizisi kullanılarak düzeltilebilir",
+      "cevap7": "metod tipinin doubleValue() metodunu desteklemesi lazım \nÇıktı \n2.5\n2.5",
+      "cevap8": "."
+    },
+    {
+      "id": "4779274",
+      "cevap1": "BB",
+      "cevap2": "class ve metotların typee göre esnetilebilmesini sağlayan yapıdır, amaç classın belirli birden faza obje türüne uyumlu hale getirilmesi",
+      "cevap3": "eğer o classta her objede olmayan belirli objelerin sahip olduğu metotlar varsa. boundlar ? * fasa fiso",
+      "cevap4": "evet içerebilir metotun jeneriği kendisiyle alakalıdır",
+      "cevap5": "child parent ilişkisi YOKTUR biri diğerini tam olrk kapsamıyor çünki",
+      "cevap6": "bence hata yok",
+      "cevap7": "<T extends Number> average(List<T> list)  (üstteki boşluk)\n\nçıktı: 2.5 2.5",
+      "cevap8": "son nodea giderdim forla onu tutardım, sonra onun nextini heade bağlarım, ondan bir öncekinin nextini null yaparım. N kadar kaydırma,(N mod total node sayısı) kadar kaydırmakla aynıdır. onu bulup o kadar kaydırılırdı"
+    },
+    {
+      "id": "1762204",
+      "cevap1": "BA",
+      "cevap2": "Otomatik doğru type casting yapmak, aynı kodu birden fazla kez yazmayı engellemek",
+      "cevap3": "Extends ve super ile boundları ifade ederiz. List<?> list yazarken sınırlandırılmamış, List<? extends Dog> sınırlandırılmış olur. Türlerin istediğimiz türden gelmesini istediğimiz zaman sınırlandırabiliriz. ",
+      "cevap4": "Eğer static bir metot ise yazılabilir. Public <T> void method() şeklinde yazılabilir. ",
+      "cevap5": "Integer olanda sadece integer verebilirken number olanda sayı olan her şeyi verebiliriz. Double, float, long gibi. ",
+      "cevap6": "Generic array oluşturamayız. Doğru hali için array yerine ArrayList<T> data kullanabiliriz. ",
+      "cevap7": "Boşluğa static <T extends Number> double average(List<T> list) yazılabilir. ",
+      "cevap8": "1 defa sağa kaydırmak için Tail node'u alıp head'e koyarım, ondan sonra da yeni head'i eski head'e bağlarım. Tail da null'a bakmalı ve onu return etmeliyiz. N kere yapmak için de rotate metodunu n kere head ile çağırırız ve en son return edilen data'yı return ederiz. "
+    },
+    {
+      "id": "8190737",
+      "cevap1": "BB",
+      "cevap2": "genel tipli classlar yazmaya yarayan bir araç. spesifik bir tip yerine initialization sürecinde belirlenecek bir tip ile class oluşturulmasına yarar",
+      "cevap3": "eğer belli bir classın altına veya üstüne ihtiyaç duyuyorsam sınırlandırırım\n\n<? extends Class> ve <? super Class> ile sınırlandırılabilir",
+      "cevap4": "İçerebilir\nörneğin void foo<T>()",
+      "cevap5": "number olan integer olanın parentıdır",
+      "cevap6": "?",
+      "cevap7": "average(List<? extends Numbers> list)\n2.5 2.5",
+      "cevap8": "Node n1 = head, n2 = head.next (Burads null olur mu diye ifle kontrol ederdim) .sonrasında n2.next null olana kadar {n1=n2, n2=n2.next}. sonra n1.next =null ve n2.next = head. return n2"
+    },
+    {
+      "id": "1764665",
+      "cevap1": "BA",
+      "cevap2": "Generic bir class türüdür. Bu classlar compile Timeda ne olduğu belli olmayan sonradan atanacak bir tür alırlar. Bu classlarin türü <> arasinda belirtilir",
+      "cevap3": "Eğer gelecek olan her objenin ortak bir özelliği olmasıni istiyorsak cast etmeden objeymis gibi kullanmak istiyorsan yaparız. A extends B şeklinde sınırlama yapılır.",
+      "cevap4": "İçerebilir.",
+      "cevap5": "Number olan integer da alabilir. Bir nevi parent class gibidir. İnteger olan da child denebilir.",
+      "cevap6": "Obje newlenirken jenerik classın türü belirtilmelidir. Bu sebepten kod hatalıdır. Node<String> olarak değişirse düzelir.",
+      "cevap7": "double (list<? extends Number>)\n2.5\n2.5",
+      "cevap8": "Önce sondaki node u almak için for ile sona kadar giderdim sonra sondakine link olarak ilkini baglardim sonra sondakinin referansini kaybetmeden bir önceki ile bağlantısını keserdim. Böylelikle tek sefer kaydirmis olurdum bunu n kez yapınca istenilen yapılmış olur. Bence en optimal bu değildir çünkü her seferinde sona kadar for ile gitmem gerekiyor."
+    },
+    {
+      "id": "8435496",
+      "cevap1": "BB",
+      "cevap2": "metotta metot çağırıken ve classta obje oluşturylurken değişebilen tip olması",
+      "cevap3": "Copy to copy from. Zaten objede sınırlıysa.\n",
+      "cevap4": "Evet jenerik metot, metotta çağırırken değişebilen tip olabilir.",
+      "cevap5": "Yoktur ikisi de farklı biri birini atası değil.",
+      "cevap6": "Generic tipinde array oluşturulamaz. ArrayList kullanılabilir",
+      "cevap7": "?\n2.5\n2.5",
+      "cevap8": "..."
+    },
+    {
+      "id": "6194008",
+      "cevap1": "CB",
+      "cevap2": "Kullanılacak tipin instantiate edilirken belirlenmesidir ve amacı da budur",
+      "cevap3": "Bi sınıfın altında veya üstünde oldupunu belirtmek için kullanırız. Upper bound ? extends sth lower bound ? super sth",
+      "cevap4": "Evet içerebilir o metoda özgü bi tip belirletebiliriz kullanıcıya",
+      "cevap5": "Yoktur öyle bir ilişki",
+      "cevap6": "Hata yoktur",
+      "cevap7": "public class <T> average(List<T> list)\nÇıktılar:\n2.5\n2.5",
+      "cevap8": "head.next.next.next.next = head; head.next.next =null "
+    },
+    {
+      "id": "6897869",
+      "cevap1": "AA",
+      "cevap2": "Classların ve fonksiyonların farklı tiplerde değişkenlerle çalışmasını sağlayan özelliktir. Temel amacı kodu terkar kullanılabilir yapmaktır.",
+      "cevap3": "Generic type ın bir classın atası yada subclassı olmasını istediğimizde bounded wildcard kullanılır. Başka bir objeden veri kopyalanacaksa upper bound, baska bir objeye veri kopyalanacaksa lower wildcard kullanılır. Upper wildcard extends, lower wildcard super keywordu ile tanımlanır.",
+      "cevap4": "Evet. Metotların generic type değişkeni bulunduğu classın generic type değişkeninden bağımsızdır. Her class generic metot içerebilir.",
+      "cevap5": "Ikisi de generic bir classın farklı tanımlarıdır. Aralarında inheritence ilişkisi yoktur.",
+      "cevap6": "Generic değiskenin array i oluşturulamaz.\nArrayList<T> data = newArrayList<>(); yazılmalı",
+      "cevap7": "Number avarage(List<? extends Number>)\n2.5\n2.5",
+      "cevap8": "head değiskenini kopyalar, son node a gelene kadar nodlar üzerinde kaydırırım.Son node un next değişkenini head e eşitlerim. head i bir sonraki node a eşitlerim ve döndürürüm. N defa kaydırma işlemini son nodun next ini head e head i sondan n inci node a eşitleyerek yaparım."
+    },
+    {
+      "id": "6202193",
+      "cevap1": "BB",
+      "cevap2": "Bazı classların (array veya list gibi) içinde obje tutması durumunda her farklı obje tipi için farklı metot ve constructor tanımlama zorunluluğunu ortadan kaldırır, çok daha akışkan bir class dinamiği sunar",
+      "cevap3": "Metot içinde kullanacağımız bir behaviour veya variable ın elimizdeki generics classında bulunduğundan emin olmak için",
+      "cevap4": "Evet içerebilir",
+      "cevap5": "Child parent yoktur.",
+      "cevap6": "Constructor çağırılırken new Node<String> denmelidir. ",
+      "cevap7": "Static <T> T average(T list)",
+      "cevap8": "Elimdeki node un next node u null ise bu next nodeu ilk node yapar, hemen önceki node un next nodunu null yaaprdım. Bunu N defa tekraelamak yerine N in 3le modunu alıp kalan kadar tekraelardım veya N in 0, 1 veya 2 olma durumuna göre ayeı ayrı case yazıp hızlıca eşitlerdim (sadece 3 tane node içeren zincir veriliyorsa)"
+    }
+  ]
+}

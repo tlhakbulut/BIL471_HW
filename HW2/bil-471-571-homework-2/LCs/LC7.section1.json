@@ -1,0 +1,202 @@
+{
+  "questions": [
+    "Öğrenci No",
+    "Text file ile binary file arasındaki fark nedir?",
+    "Bir dosyaya yazarken düzenli olarak flush yapmamak neye yol açabilir?",
+    "Binary bir dosyaya bir object yazdırırken bu objenin hangi interfaceyi implement etmesi gerekiyor?\nBu interfacenin metotlarını sıralayınız.\nBu interface functional veya marker bir interface midir?",
+    "Binary bir dosyaya primitive typeler (int, float, char etc.) yazılabilir mi, evet ise nasıl?",
+    "Buffered reader ve scanner sınıfları ile dosya okurken dosyanın sonuna geldiğini nasıl kontrol edilir?",
+    "Binary bir dosya okurken dosyanın sonuna gelindiği nasıl test edilir?",
+    "public class RandomAccessDemo {\n    public static void main(String[] args) throws Exception {\n        RandomAccessFile raf = new RandomAccessFile(\"numbers.bin\", \"rw\");\n        raf.writeInt(10);\n        raf.writeInt(20);\n        raf.seek(0);\n        int a = raf.readInt();\n        raf.seek(7);\n        byte b = raf.readByte();\n        System.out.println(a + \" \" + b);\n        raf.close();\n    }\n}\n\nOutput?",
+    "public class Demo {\n    public static void main(String[] args) throws Exception {\n        try{\n            FileOutputStream fos = new FileOutputStream(\"log.txt\", true);\n            PrintWriter pw = new PrintWriter(fos);\n            pw.println(\"New log entry\");\n            throw new Exception();\n        }\n        catch(Exception e){\n        System.err(\"Oopps!\");\n        }\n    }\n}\n\nBu kod çalıştırıldığında log.txt dosyası nasıl etkilenir, açıklayınız."
+  ],
+  "answers": [
+    {
+      "id": "7214465",
+      "cevap1": "text dosyaları insan tarafından okunabilir karakterler içerirken, binary dosyalar ham veriyi makine tarafından işlenebilir biçimde saklar",
+      "cevap2": "flush işlemi düzenli yapılmazsa, veri tamponda bekleyebilir ve program çökmesi veya ani güç kaybı durumunda kaybolabilir",
+      "cevap3": "binary dosyaya yazdırmak için nesnenin java.io.Serializable arayüzünü implement etmesi gerekmektedir, bu arayüzün metodu bulunmamakta ve marker interface olarak kabul edilir",
+      "cevap4": "Evet \nPrimitive türler java.io.DataOutputStream veya java.io.ObjectOutputStream kullanılarak binary dosyaya yazılabilir.",
+      "cevap5": "readLine() veya hasNext() metodlarının null veya false döndürüp döndürmediği kontrol edilir.",
+      "cevap6": "Binary bir dosya okurken sonuna gelindiğini anlamak için InputStream veya RandomAccessFile ile read() metodunun -1 döndürüp döndürmediği kontrol edilir veya EOFException yakalanır",
+      "cevap7": "java.io.EOFException",
+      "cevap8": "Kod derlenmez çünkü System.err(\"Oopps!\"); hatalı bir çağrıdır"
+    },
+    {
+      "id": "8190737",
+      "cevap1": "txt dosyası veriyi txt olarak okur binary dosya binary olarak",
+      "cevap2": "cache'e fazla yüklenmiş oluruz",
+      "cevap3": "serializable,\nmetodu yok,\nmarker interface",
+      "cevap4": "evet. binary değerleri yazılır",
+      "cevap5": "read etmeye çalışmamıza rağmen null döndürüyosa sonundayızdır",
+      "cevap6": "read etmeye çalışmamıza rağmen null döndürüyosa sonundayızdır",
+      "cevap7": "10 + 20",
+      "cevap8": "\"New log entry\" yazar"
+    },
+    {
+      "id": "3659398",
+      "cevap1": "Text file text şeklinde yazdırıyor binary file binary şeklinde yazdırıyor.",
+      "cevap2": "Herhangi bir elektrik kesintisi gibi bir aksilikte bilgilerin kaybolmasına yol açabilir.",
+      "cevap3": "Serizable olması gerekiyor. Bu interfacin metodu yoktur marker interfacetir.",
+      "cevap4": "Dataoutputstream ile yazılabilir.",
+      "cevap5": "Buffered reader için stringler null ile primitive typler -1 mi diye kontrol ediliyor scanner hasnext metodu ile kontrol ediyor.",
+      "cevap6": "-1 değeri kullanılarak ya da endoffile metoduyla test edilebilir.",
+      "cevap7": "10 20",
+      "cevap8": "New Log entry yazar"
+    },
+    {
+      "id": "4731282",
+      "cevap1": "Text file'da dosyada string bulunur, binary file'da dosyaya byte'lar bulunur.",
+      "cevap2": "Uzun bir işlemde güç kaybı durumunda yapılan ilerlemenin kaybedilmesine yol açabilir.",
+      "cevap3": "Serializable interface'inin implement edilmesi gerekir. Marker interface olduğu için metodu bulunmaz.",
+      "cevap4": "primitive dataları byte'a çevirerek binary bir dosyaya yazdırabiliriz.",
+      "cevap5": "scanner'da hasNext() metodu false dönerse, buffered reader'da return ettiği değer -1 ise sona gelinip gelinmediği anlaşılır",
+      "cevap6": ".",
+      "cevap7": "10 00",
+      "cevap8": "New log entry\nOopps!\nyazdırılır"
+    },
+    {
+      "id": "6429016",
+      "cevap1": "Text file insan tarafından okunabilir. Binary file bilgisayar tarafindan",
+      "cevap2": "Veri kaybına, güncelleme gecikmesine, dosyanın bozulmasına neden olabilir. ",
+      "cevap3": "Serializeable bir marker interfacetir. Metodu yoktur. ",
+      "cevap4": "Evet yazılabilir. Bilgisayar onları cevirecektir. Ve java'da binary halini verecektir. ",
+      "cevap5": "Readline() null dönerse dosya sonudur.scanner. Hasnextline false dönerse dosya sonudur.",
+      "cevap6": "Buffer kullanarak. Object inputstream yardımıyla test edilir. Available() metodu kullanılabilir. ",
+      "cevap7": "10 20",
+      "cevap8": "Kod çalışmaz system.err sonrasında println olmalı. "
+    },
+    {
+      "id": "9830856",
+      "cevap1": "Text \nfile insan tarafından okunabilen karakterlerden oluşur. Örneğin .txt, .csv, .html gibi dosya türleri metin dosyalarıdır içeriği düz yazı şeklinde saklanır\n\nBinary File  Makine tarafından yorumlanan veriler içerir örneğin .exe, .jpg, .mp3, .dat gibi dosya türleri binary dosyalardır. İçeriği 0 ve 1’lerden oluşur, insanlar tarafından doğrudan okunamaz.",
+      "cevap2": "veri kaybı gecikmeli yazma ve veri tutarsızlığına yol açabilir",
+      "cevap3": "serializable interfacei impelement etmesi gerekir bu bir marker interfacedir ve metotları yoktur\n",
+      "cevap4": "evet yazılabilir\nBunu yapmak için DataOutputStream veya ObjectOutputStream kullanılabilir",
+      "cevap5": "scanner.hasNext()\nline = bufferedReader.readLine()) != null\nifadeleri ile kontrol edilir",
+      "cevap6": "available() metodu ile kontrol edilir",
+      "cevap7": "10 20",
+      "cevap8": "bilemedim"
+    },
+    {
+      "id": "6897869",
+      "cevap1": "Text file veriyi char tipinde saklar. Binary file byte tipinde tutar.",
+      "cevap2": "Verinin bir kısmı kaybolur.",
+      "cevap3": "Serializable. Metotu yok . Marker interface",
+      "cevap4": "Evet ObjectOutputStream classının writeInt writeChar gibi metotlarıyla.",
+      "cevap5": "Buffered readerın read metodu -1 döndürür. ReadLine null döndürür.",
+      "cevap6": "Available metodu ike okunabilecek byte sayısı öğrenilir.",
+      "cevap7": "10 20",
+      "cevap8": "Dosya etkilenmez, printWriter ın FileOutputStream alan constructoru yok."
+    },
+    {
+      "id": "1764665",
+      "cevap1": "İkisinde de veri tutulur, fark tutulan verinin anlamlandirilmasindadir. Binary dosyada veri byte kodlar halinde tutulurken, text fileda bu hex kodudur.",
+      "cevap2": "Eğer elektrik giderse veya teknik bir sorun olursa ve flush yapilmamissa ordaki veri kaybedilebilir.",
+      "cevap3": "Serializable marker interfaceini implement etmeli. Methodu yoktur. Marker interfacedir",
+      "cevap4": "Yazılabilir sonuçta int 4 bytedir ve okurken 4 byte okunup anlamlandirilirsa kaydedilebilir. Diğerleri için de aynı yöntem geçerlidir.",
+      "cevap5": "HasNext() fonksiyonu ile",
+      "cevap6": "Binary dosyanın Length'i alinarak bakilabilir.",
+      "cevap7": "10 0 ",
+      "cevap8": "log.txt dosyasında değişim olmaz çünkü yazma işlemi tamamlanmadan system error fırlatılmıştır."
+    },
+    {
+      "id": "2051651",
+      "cevap1": "Text file'da karakterler kaydedilir. Binary file da byte degerleri kaydedilir",
+      "cevap2": "Program beklenmedik bir şekilde kapatılırsa son bufferda kalan verilerin kaybedilmesine neden olabilir.",
+      "cevap3": "Serializable interface. Bu interface'in metodu yoktur, marker interface'dir",
+      "cevap4": "Yazılır, bunların byte degerleri yazılır ama okunurken anlaşılması icin ek bilgi gerekebilir ",
+      "cevap5": "Scanner için hasNext() metodu. Buffered reader icin has() metodu.",
+      "cevap6": "Length-1 degerine ulaşıldıgında anlaşılır",
+      "cevap7": "10 0",
+      "cevap8": "log.txt dosyasının sonuna New log entry yazısı eklenir."
+    },
+    {
+      "id": "8964453",
+      "cevap1": "Text file insanlar tarafindan okunmasi icin, binary file makina diline daha yakindir, ve 01 lerden olusur.",
+      "cevap2": "Streamler akis tabanli veri akis setleridir denebilir, duzenli flush yaparak buffer temizlenir ve gereksiz veri akis veya hatalarinin onune gecmis olur.",
+      "cevap3": "Javada bir nesneyi binary dosyaya yazmak icin Serializable interfacenini implement etmek zorundadir. Bir marker interface dir. Herhangi bir method icermez constructoru vardir.",
+      "cevap4": "Evet dataOutputStream javada primitive typelari binarye cevirip yazmak icin kullanilir.",
+      "cevap5": "readLine() != null kontrolu yapilabilir",
+      "cevap6": "Read() metodu -1 verir veya available() metodu denebilir.",
+      "cevap7": "10 0",
+      "cevap8": "Ilk derleme hatasi verir, eger compile edilebilecek duzeye gelirse log.txt de degisikligin meydana gelmemesi beklenir."
+    },
+    {
+      "id": "7817361",
+      "cevap1": "Binary file verileri binary veri tipinde tutar. Text file verileri string veri tipinde tutar.",
+      "cevap2": "Verilerin kaybolmasına, değişmesine veya istemediğimiz kişilerin verilere ulaşmasına yol açabilir.",
+      "cevap3": "Serializeable. toString vb. Metotlar ama hatırlamıyorum. Marker interface.",
+      "cevap4": "Evet yazılabilir. Verinin değerini char ise ascii tablosuna göre, intiger ise 10luk sistemdeki değerini 2lik sistemdeki değerine çevirerek tutar.",
+      "cevap5": "hasNext() metodu ile",
+      "cevap6": "Hatırlamıyorum.",
+      "cevap7": "10 00",
+      "cevap8": "log.txt diye bir dosya açılır ve içine önce New log entry sonra Oopps! Yazılır."
+    },
+    {
+      "id": "1762204",
+      "cevap1": "Text file insanların okuyarak anlayabileceği bir dosyadır fakat binary dosyaya byte'lar yazılır. Text dosyalarına ise karakterler yazılır ",
+      "cevap2": "Eğer kodumuz çökerse, son yazacağımız şeyin dosyada değil buffer'da kalmasına sebep açabiliriz ve yazacağımız şey yok olur. ",
+      "cevap3": "Serializable interface'ini import etmesi gerekir. Bu interface'in metodu yoktur ve marker interface'tir.",
+      "cevap4": "DataOutputStream kullanarak writeInt, writeFloat ve writeChar gibi metotlar kullanılarak yazılabilir. ",
+      "cevap5": "Buffered reader ile okurken eğer read yaptığımızda -1 gelirse veya readLine yaptığımızda null gelirse sona geldiğimizi, scanner ile okurken ise hasNext() kullanarak sona gelip gelmediğimizi kontrol edebiliriz. ",
+      "cevap6": "Dosyayı okurken EOFException alarak dosyanın sonuna geldiğimizi anlayabiliriz. ",
+      "cevap7": "10 0",
+      "cevap8": "Dosyanın başını etkilemeden sonuna \"New log entry\" yazarız. "
+    },
+    {
+      "id": "6202193",
+      "cevap1": "Text file da data ascii yazı olarak kaydedilirken binary file da data 0 ve 1 şeklinde ve bytelarla kaydedilir",
+      "cevap2": "Data corruptiona sebep olabilir",
+      "cevap3": "Serializable metodu yok. Marker",
+      "cevap4": "Evet. Dosya türüne göre uygun sayıda byte açılır ve uygun şekilde 0 ve 1 ler yazılır. Mesela int yazacaksak writeInt givi metotlar kullanılır",
+      "cevap5": "hasNext gibi metotlae kullanılır false dönerse birmiştir",
+      "cevap6": "Eğer pointer lenght metoduyla dönülen değere ulaşırsa sona gelinmiştir",
+      "cevap7": "10 00",
+      "cevap8": "System.err() in hedeflediği dosya seçilmemiştir. New log entry log.txt e text olarak yazılır."
+    },
+    {
+      "id": "6275288",
+      "cevap1": "Text file insanların okuyabileceği, binary file insanların okuyamayacağı, bilgisyarın okuyabileceği şekilde yazılır. ",
+      "cevap2": "Veri kaybına yol açabilir. Bufferda kalan. ",
+      "cevap3": "Serializable interfacei.Bu  İnterface metot içermez. Marker interfacedir. ",
+      "cevap4": "Evet asci codundaki değerleri yazılır. İnt 4 byte gibisinden. ",
+      "cevap5": "Buffered readerde read metodu-1 verirse. Scannerde hasnext ve türevleri ile. ",
+      "cevap6": "İsavailable metodu ile.",
+      "cevap7": "0 0 ",
+      "cevap8": "Eğer log. txt varsa üstüne yazılır. Log.txt yoksa yeni dosya açılıp içine new log entry yazılır. Sonra hata alıyoruz hata catch bloğuna girince Oopps!  Yazdırır ekrana. "
+    },
+    {
+      "id": "8435496",
+      "cevap1": "Binary dosyada direk bytelar yazılır. Text dosyasında da characterler (ascii utf olabilir) yazılır.",
+      "cevap2": "Program beklenmedik şekilde sonlanırsa bufferdaki byte lar boşa gidebilir.",
+      "cevap3": "Serilazable marker interface",
+      "cevap4": "Evet int 4 byte float 4 byte char 1 byte bool 1 byte olarak yazılır sırayla.",
+      "cevap5": "Scanner .hasNext() metoduyla\nBufferedReader .next() -1 döner ise",
+      "cevap6": "Zaten başta dosya büyüklüğünü biz yazıyoruZ.",
+      "cevap7": "10 0",
+      "cevap8": "Sonuna \"New log entry\\n\" stringini ekler."
+    },
+    {
+      "id": "6194008",
+      "cevap1": "Biri binary şeklinde filedır diğeri text şeklinde file dır binary file encoding ile okunur",
+      "cevap2": "Veri kaybına yol açar",
+      "cevap3": "Serializable",
+      "cevap4": "Evet yazılabilir byte şeklinde yazılır",
+      "cevap5": "Scannerda hasNext ile buffered reader da -1 olduğunda",
+      "cevap6": "Toplam byte sayısı analiz edilerek",
+      "cevap7": "10 00",
+      "cevap8": "Append true denmiş bu yüzden \"New log entry\" eklenir dosyaya."
+    },
+    {
+      "id": "4380745",
+      "cevap1": "Text olarak yazılınca karakter karakter yazılıyor. Binary olunca doğrudan veri byte byte yazılıyor bu sayede nesneler vb. Yapılarda dosyalara yazılabiliyor.",
+      "cevap2": "Düzenli veri akışının olduğu bir durumda okunması gereken önemli bir veri olduğu zaman veriyi doğru bir şekilde alınması için flush alınması gerekir.",
+      "cevap3": "Evet markerdır. ",
+      "cevap4": "Type olarak ayrı ayrı yazılamaz, karakter karakter yazılır. Bizim ayırmamız gerekir.",
+      "cevap5": "Karakter karakter okunarak null değerin gelinceye kadar okunur",
+      "cevap6": "Length’ine bakılır.",
+      "cevap7": "10 10",
+      "cevap8": "New log entry \nYazar. Sonra exception fırlatılır ve mesaage’ı Oops! Olan hata açılır"
+    }
+  ]
+}

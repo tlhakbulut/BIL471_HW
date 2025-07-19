@@ -1,0 +1,290 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "What grade (A, B, C, D, or F) do you expect to earn by the end of this course? ",
+    "Java'da Generic kavramı nedir, bu kavramın temel amacı nedir?",
+    "Upper bound ve lower bound wildcardları nasıl ifade edersiniz? Upper ve lower boundun kullanılacağı durumlara birer tane örnek veriniz.",
+    "Generic bir classın constructorunda type parametresi bulunur mu, neden?",
+    "MyGenericClass<A> ve MyGenericClass<Object> classları arasında kalıtım (child-parent) ilişkisi nasıldır, açıklayınız.",
+    "class Node<T>{\n    T[] data = new T[10];\n}\n//PSVM\nNode<String> stringnode = new Node<>();\n\nBu kodda bir hata var mı? (Varsa) Bu hata nedir, nedenini açıklayınız. (Varsa) Bu hata nasıl düzeltilmeli, kodun doğru halini yazınız.",
+    "swapHeadAndTail metodu aşağıda tanımı verilmiş Node classının birbirlerine bağlanmış nodelerinden ilkini alan ve baştaki Node ile sondaki Node'yi değiştiren metottur.\n\nÖrnek:\nBaşlangıçta: A -> B -> C\nmetodu A ile çağırdığıktan sonra: C -> B -> A\nAyrıca metot en başa gelen Nodeyi dönmelidir (bu örnekte C dönmeli).\n\nclass Node{\n    int data;\n    Node next;\n}\n\nstatic Node swapHeadAndTail(Node head) {\n   Node a = head;\n   Node b = head.next;\n   Node c = head;\n   Node d = null;\n   while (____ != null) {\n       d = c;\n       c = c.next;\n   }\n   c.next = ____;\n   d.next = ____;\n   a.next = ____;\n   return ____;\n}\n\nBuna göre boşluklara neler gelmelidir?",
+    "public _________ {\n    public void sırala(List<T> liste) {\n        // Sıralama algoritmanız\n    }\n}\n\nYaptığınız uzun çalışmalar sonucu yeni bir sıralama algoritması buldunuz. Bunu implement etmek için bir class yazmalısınız. Bu classın declarationunu nasıl yapardınız neden, boşluğu buna göre doldurun."
+  ],
+  "answers": [
+    {
+      "id": "3963286",
+      "cevap1": "DC",
+      "cevap2": "Generic öncesi değişebilen classlardır",
+      "cevap3": ".",
+      "cevap4": "Evet bulunur,çünkü variablelar içindeki parametreyle değişmektedir ",
+      "cevap5": ". ",
+      "cevap6": "Doğru",
+      "cevap7": ".",
+      "cevap8": "."
+    },
+    {
+      "id": "5187413",
+      "cevap1": "CC",
+      "cevap2": "Classı instantinate etmeden önce belli bir tiple yazmaya gerek kalmamasıdır",
+      "cevap3": "Lower bound yazabilceģimiz minumum class tipini belirler upper bound da ulaşabileceģimiz maksimum class tipini belirtir örneğin t extends comperable demek class tiplerimizi t yi extend edenler olarak sınırlandırır",
+      "cevap4": "Hayır bulunmaz",
+      "cevap5": "Normal kalıtım ilişkisi yoktur birinin obnesi diğerinin de objesi sayılmaz",
+      "cevap6": "Generic type array yazamayız. Arraylost kullanabiliriz",
+      "cevap7": "---",
+      "cevap8": "<T>"
+    },
+    {
+      "id": "6343320",
+      "cevap1": "DC",
+      "cevap2": "Kodu yeniden kullanılabilir yapmak",
+      "cevap3": ".",
+      "cevap4": "Hayır bulunmaz",
+      "cevap5": "Birbirinden bağımsızdır",
+      "cevap6": "data = (T[]) new object(10)",
+      "cevap7": "c.next, b, null, null, c",
+      "cevap8": "sıralama <T extends comparable>"
+    },
+    {
+      "id": "5628146",
+      "cevap1": "BB",
+      "cevap2": "tür güvenliğini sağlamak ve tekrarı azaltmak",
+      "cevap3": "upper wildcard ile çalışırken esneklik sağlar mesela koleksiyonu okumak istiyorsak lowerbound ise kontravaryant türlerle çalışırken",
+      "cevap4": "hayır bulunmaz type erasure yüzünden kaybolur",
+      "cevap5": "javada generic türler covaryant değildir inheritence uok yani",
+      "cevap6": "generic array oluşturulamaz data = (T[]) new Object[10]; yazabilirim",
+      "cevap7": "b null null c",
+      "cevap8": "sıralama yapabilmek için comparable plmalı çıktılar Sıralama öncesi: [5, 2, 8, 1]\nSıralama sonrası: [1, 2, 5, 8]"
+    },
+    {
+      "id": "8059049",
+      "cevap1": "DC",
+      "cevap2": "Type safe kodlama sağlar,farklı veri tipleriyle çalışmamızı sağlayan bir yapıdır",
+      "cevap3": "Upper Bound:? extends T\nLower Bound:? super T \nUpper Bound read,Lower Bound write için kullanılır ",
+      "cevap4": "hayır bulunmaz çünkü generic in type bilgisi compile için geçerli",
+      "cevap5": "kalıtım yok",
+      "cevap6": "generic tipi runtime da geçerli değil oyüzden 2. satırda new T olmamalı ",
+      "cevap7": "d\nc\nb\na\nd",
+      "cevap8": "class Sort<T extends <Comparable>>"
+    },
+    {
+      "id": "8857652",
+      "cevap1": "BB",
+      "cevap2": "türü parametre olarak alır ve tekrar kullanılabilirliği geliştirerek güvenliği de arttırır",
+      "cevap3": "integer ve üst sınıfları: lower\nnumber ve alt sınıfları: upper\n",
+      "cevap4": "hayır, type parametresi sınıfın kendinde tanımlı",
+      "cevap5": "birbirinden bağımsızlar yani yoktur",
+      "cevap6": "T[] data = (T[]) new Object[10]",
+      "cevap7": "c.next\nd;\nnull;\nnull;\nc;",
+      "cevap8": "myClass <T> implements Sıralama<T>"
+    },
+    {
+      "id": "5361565",
+      "cevap1": "BB",
+      "cevap2": "daha esnek kod yazma konusunda yardımcı olur.her class uygun kod yazabilmek amacıdır.",
+      "cevap3": "? extends T ve ? super T şeklinde ifade ederim methodlarda parametre konusunda bize yardımcı olurlar",
+      "cevap4": "bulunmaz çünkü çünkü zaten constructerlarda type parametresi yoktur.",
+      "cevap5": "aralarında böyle bir ilişki soz konusu değildir. javada normalde olan inheritance genericlerde geçerli değildir.",
+      "cevap6": "hata vardir. javada genericlerle array oluşturulmayacağı için hata vardir.object dizi oluşturup generic type kullanarak cast edebilirim.",
+      "cevap7": "c.next b null null c",
+      "cevap8": "class Sortn<T extends comparable>"
+    },
+    {
+      "id": "2051651",
+      "cevap1": "CB",
+      "cevap2": "Kullanılacak değişken turkerinin Compile zamanında belirmenmesini sağlayan java kavramıdır. Amacı esnek kod yazabilmektir",
+      "cevap3": "Upper bound - ? Extends T\nLower bound - ? Super T",
+      "cevap4": "Bulunmaz, type parametresi class yazılırken verilmistir",
+      "cevap5": "Yoktur, farklı sınıflar ",
+      "cevap6": "Geberic tip T ile obje oluşturulamaz",
+      "cevap7": "Bilmiyorum ",
+      "cevap8": "<T> sırala(List<T> liste)"
+    },
+    {
+      "id": "5281670",
+      "cevap1": "CC",
+      "cevap2": "generic kavramı tipe bağlı olmadan metot ya da class tanımlamaktır , amaç kod döngüsünü sağlamaktır",
+      "cevap3": "—",
+      "cevap4": "bulunamaz",
+      "cevap5": "Object olan A olanın parentıdır. java’da her şey obje classından türer ",
+      "cevap6": "Tnin array şeklinde başlatılmış olması hata. ",
+      "cevap7": "a\nb\na\nnull",
+      "cevap8": "List<T>  "
+    },
+    {
+      "id": "2103960",
+      "cevap1": "CB",
+      "cevap2": " Farklı classa ait parametreler alan sınıflardır",
+      "cevap3": " ? upper bound parenti göstererek üstten sınırlar lower bound child dan parenta doğru sınır koyar.  Upper, ? extends parent.  Lower ? super child",
+      "cevap4": " Hayır ",
+      "cevap5": "   Inheritance ilişkisi yok",
+      "cevap6": "Generic ile doğrudan array açılamaz, onun yerine arraylist kullanılabilir",
+      "cevap7": " c, null , c , c.next,c",
+      "cevap8": "class ClassName<T> "
+    },
+    {
+      "id": "6914659",
+      "cevap1": "DD",
+      "cevap2": "Her türü destekleyen genel bir yapı ",
+      "cevap3": "Upper bound okuma, lower bound yazma amacıyla kullanılır. UpperBound(? Extends T) ve LowerBound(? extends T)",
+      "cevap4": "Bir generic sınıfın constructor'ı generic type parametresini alabilir ancak constructor'ın kendisi generic olamaz.cunku runtimeda tür bilgisi silinir",
+      "cevap5": "MyGenericClass<A> ve MyGenericClass<Object> arasında kalıtım ilişkisi yoktur. Eğer MyGenericClass<T> içindeki T, Object'in bir alt sınıfıysa, ? extends Object kullanarak ilişkili hale getirebiliriz. Generics kullanırken kalıtım ilişkisi oluşturmak için wildcard (? extends) kullanılmalı.",
+      "cevap6": "T[10] hatalıdır cünkü generics runtimeda tür bilgisine sahip değildir. Diziyi Object[] olarak oluşturup (T[]) ile cast edebiliriz",
+      "cevap7": "(c.next != null) \nc.next = null \nd.next = a \na.next = b \nreturn c",
+      "cevap8": "public class MySorter<T> türü belli olmadığı için declarationı T ile yaparız."
+    },
+    {
+      "id": "4114373",
+      "cevap1": "CB",
+      "cevap2": "generic, javada bir class'in içine veya bir metodun içerisine birbirinden farklı tipte değişkenleri koymamızı sağlar",
+      "cevap3": "upper bound <? super ...> ile yani o classin extend olduğu classlari icine alirken, lower bound <? extend ...> şeklinde olduğu için o classtan extend edilen classlari içine alabilir.",
+      "cevap4": "type parametresi class içerisinde nasıl tanımlandıysa, örneğin T değişkeni ile tanimlandiysa T type olmuş olur.",
+      "cevap5": "-",
+      "cevap6": "-",
+      "cevap7": "head.next.next()\nhead\nhead.next()",
+      "cevap8": "class<T extend Collections>"
+    },
+    {
+      "id": "4275079",
+      "cevap1": "CB",
+      "cevap2": "Method ya da classlarda type özgürlüğü sağlar .",
+      "cevap3": "Upper: a extends b\nLower : a super b",
+      "cevap4": "Bulunabilir .",
+      "cevap5": "Object A nın atasıdır.",
+      "cevap6": ".",
+      "cevap7": ".\nD\nA\nB\nB.next",
+      "cevap8": "Class sırala <T> "
+    },
+    {
+      "id": "2384475",
+      "cevap1": "CB",
+      "cevap2": "Biter type datayı başka bir classda tutmak",
+      "cevap3": "Upper ı \"? extends T\" ile lower ı \"? super T\" ile yaparız.",
+      "cevap4": "Bulunmayabilir. ",
+      "cevap5": "ikiside tüm typelarde generic alabilir",
+      "cevap6": "T data array olmamalı.\nT data = new T; ",
+      "cevap7": "head\nhead.next\nhead.next.next\nhead",
+      "cevap8": "MySortClass<? extends comparable>"
+    },
+    {
+      "id": "7732416",
+      "cevap1": "CB",
+      "cevap2": "Generics data tipini belirtmeden runtime da belirlenecek bir data tipi yazmaktır. Bu bize esneklik ve tip güvenliği sağlar",
+      "cevap3": "Upperbound ? Extends Animal , lowerbound ? super Animal. Upperbound beklediğim tip Animal veya subclass ı ise (dog cat gibi) lower bound ise beklediğim tip en az animal ise (lifeForm vs gibi) ",
+      "cevap4": "Bulunur çünkü kullanacağı tipi bilmesi gerekiyor ",
+      "cevap5": "Yoktur. Tiplerin arasında inheritance olması sınıflar arasında bir inheritance olduğu anlamına gelmez. Dersteki animal ce giraffe örneği gibi  ",
+      "cevap6": "Var. Generic bir tipten, o tipin arrayi oluşturulamaz. Sadece T[] data şeklinde referans belirtilebilir = sonrası doğru değil. Silinmeli ",
+      "cevap7": "B.next.next . b . b . Null . d",
+      "cevap8": "."
+    },
+    {
+      "id": "6157698",
+      "cevap1": "BB",
+      "cevap2": "Type'ı belli olmasan method class interface yazmamızı sağlar",
+      "cevap3": "<? extends T>\n<? super T>\nbelli bir classın altındaki objeleri almak istediğimde.\nObjeleri atacağım classın belli bir classın üstünde olmasını istediğimde",
+      "cevap4": "Parametrenin type'ı bilinmediğinden yazılması gerekir",
+      "cevap5": "Yoktur. Genericlerin içindeki type lar arasındaki inheritance classın inheritance'ı değildir",
+      "cevap6": "yok",
+      "cevap7": "c\nb\nnull\n",
+      "cevap8": "."
+    },
+    {
+      "id": "9905145",
+      "cevap1": "CB",
+      "cevap2": "generic kavrami javada farki turde olan değişkenleri toplu bir yere aktarmak icin kullanilir mesela arraylist olusturup icine int ve string atmak gibi",
+      "cevap3": "upper bound ve lower bound generic kavramini kısıtlamak icin gereklidir, ? extend T ve ? super T şeklinde alt ve üst sınır belirleyebiliriz.",
+      "cevap4": "bulunmaz çünkü classi acarken icine ne alabilecegi belirtmemiz gerekiyor o yuzden constructor icinde typelari tanimlamamiza gerek duyulmuyor",
+      "cevap5": "Object classi A classinin parent classidir ancak generic olarak acilan bu 2 class arasinda child-parent ilişkisi yoktur",
+      "cevap6": "Psvm olan yeri Node<T> stringnoden= new node<String>(); seklinde duzeltebiliriz",
+      "cevap7": "while (b != null)\nc.next = a;\nd.next = b;\na.next = c;\nreturn a;",
+      "cevap8": "public void algoritma (<? extends sırala>)"
+    },
+    {
+      "id": "6539697",
+      "cevap1": "BB",
+      "cevap2": "generic kavramı yazılan metodun-classın belli bir type'ı almak yerine bütün classlar için kullanılabilmesini sağlar",
+      "cevap3": "upper bound:<? extends T> şeklinde olur, sadece T ve altındaki classları alabilir.\nlower bound:<? super T> şeklinde olur, sadece T ve üstündeki classları alabilir.",
+      "cevap4": "bulunmaz çünkü type parametresi classın adı yanında <> ifadesi içine yazılır",
+      "cevap5": "-",
+      "cevap6": "Node<String> stringnode = new Node<String>(); olmalı",
+      "cevap7": "c.next\nd",
+      "cevap8": "class A<T> şeklinde yapardım çünkü sıralama metodunda List<T> kullanılmış"
+    },
+    {
+      "id": "1280995",
+      "cevap1": "CC",
+      "cevap2": "Generic'ler bir nevi bir değişkendir, farklı sınıflara göre istediğimiz sınıf veya metoda farklı behaviour'lar tanımlamamızı sağlar. ",
+      "cevap3": "upperbound için extends, lowerbound için super keyword'ü kullanılır. Amaç generic olarak alabildiğimiz sınıfları sınırlamak. Örneğin Animal almak istiyorum ama Bird ve alt sınıfları olamaz. ",
+      "cevap4": "Bulunmaz. Type zaten compile sırasında belirlenir. ",
+      "cevap5": "MyGenericClass<Object> sınıfı orijinal sınıfın metod ve attribute'larının Object için çalışan compile edilmiş hallerini inherit eder. ",
+      "cevap6": "Herhangi bir hata yok.",
+      "cevap7": "c.next, head, gerisini bilmiyorum. ",
+      "cevap8": "\"class NewAlgorithm extends List<T>\""
+    },
+    {
+      "id": "9245287",
+      "cevap1": "AA",
+      "cevap2": "Generic parametreler classin objesi olusturulurken belirlenir. Ya da metod cagirilirken.",
+      "cevap3": "Upper bound extends ile Lower bound super ile ifade edilir. Örneğin sevdaya ile ",
+      "cevap4": "Bulunmaz çünkü parametre çalışma zamanında silinir.",
+      "cevap5": "Kalıtım yoktur ancak <A> classi object türünden değişkenleri tutamazken <Object> classi A türünde nesneler tutabilir, çünkü A is an Object",
+      "cevap6": "<>  içi boş bırakıldığında object olur ama biz referans tipini String olarak verdik. new Node<String>() ile düzeltilir ",
+      "cevap7": "c\nb\na\nb\nc",
+      "cevap8": "sorting<T>"
+    },
+    {
+      "id": "7374887",
+      "cevap1": "BB",
+      "cevap2": "Generic bir metot veya classın herhangi bir tip ile çalışmasını sağlayan bir değişkendir.",
+      "cevap3": "Upper bound için T extends C lower bound için T super C",
+      "cevap4": "Bulunmaz ",
+      "cevap5": "Java da tüm classlar Object classının alt classı olduğunda A yerine girebileceğimiz tüm tipler objecti extend eder.dolayısıyla MyGenericClass<A> classı MyGenericClass<Object> classının child classıdır.",
+      "cevap6": "T[] yanlış generic tipleri direkt olarak arrayla kullanamayız. Bunun yerine ArrayList<T> yazabiliriz.",
+      "cevap7": "c null b null",
+      "cevap8": "class MyClass<T extends comparable> "
+    },
+    {
+      "id": "6418019",
+      "cevap1": "CC",
+      "cevap2": "Bir classı veya metodu generic olarak tanımlamak daha flexible kod yazmamızı ve type safety sağlar",
+      "cevap3": "upper bound, type parametresinin upper bound olan class ve onun subclasslarından biri olması gerektiğini söyler, lower bound ise type parametresinin lower bound olan class ya da o classın üst classlarından birisi olması gerekitigini söyler. ",
+      "cevap4": "hayır bulunmaz",
+      "cevap5": "-",
+      "cevap6": "hata yok",
+      "cevap7": "b,  ,  ,  , Node",
+      "cevap8": "class_name <T> şeklinde olurdu, çünkü metodun parametresinden generic var"
+    },
+    {
+      "id": "3688139",
+      "cevap1": "CC",
+      "cevap2": "Farklı wrapper typelari tutmak için olusturulan, bize kodda esneklik saglayan kavram",
+      "cevap3": ".",
+      "cevap4": "Hayir belirli bir type bulunmaz cunku kod olusturulan type ı derleme zamaninda tanimlayabilir.",
+      "cevap5": "Birbirlerinj extend etmedikleri icin belirli bir kalitim iliskisi yoktur. <A> classı esnek bir sekilde farkli typelarda islem yapabilecek iken <Object> classı object cinsinde islem yapabilecek.",
+      "cevap6": "\"T\" type ile dogrudan obje veya array olusturulamaz. Duzeltmek icin diziyi object veya string cinsinden olusturabiliriz.",
+      "cevap7": "c\nd.next\na.next\nb.next",
+      "cevap8": "sort implements Isort<T>"
+    },
+    {
+      "id": "2112376",
+      "cevap1": "CC",
+      "cevap2": "Tip belirtilmeden çalışmasını sağlar, farklı veri tipleriyle kullanılabilir",
+      "cevap3": "Daha üstünde ve daha altındaki sınıfları dahil etmek için kullanılır",
+      "cevap4": "Hayır çünkü zaten class tanımında verilir",
+      "cevap5": "Kalıtım yoktur",
+      "cevap6": "Compile hatası, generic tiplerle dizi oluşturulamaz",
+      "cevap7": "c.next, b, null, null, c",
+      "cevap8": "-"
+    },
+    {
+      "id": "1889298",
+      "cevap1": "CC",
+      "cevap2": "Genericler bir metodun veya classın içerisinde kullandığımız variableları daha genel olarak kullanabilmemizi sağlar (bir metodun içerisinde hem string hem integer durumu sağlarsak kullanılabilir.)",
+      "cevap3": "<? extends C> ve <? super C> şeklinde ifade ederiz bu wildcardlardan ilkini sadece C ve C'nin ara classlarını ikincisini ise sadece C ve C'nin super classlarını parametre olarak alır.",
+      "cevap4": "Bulunması zorunlu değildir ama bulunabilir. Çünkü constructor generic bir oarametre almadan da tanımlanabilir.",
+      "cevap5": "-",
+      "cevap6": "Kodda hata vardır bu hata T[] data = new T[10]; satırından kaynaklanmaktadır düzeltmek icin diziyi object[] olarak tanımlayıp T[] cast edilmelidir.",
+      "cevap7": "1.c.next\n2.b\n3.null\n4.null\n5.c",
+      "cevap8": "class C<T>"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+"""def load_json_to_dataframe(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    questions = data["questions"]
+    answers = data["answers"]
+    lc_true = False
+
+    if len(questions) > 1:
+        lc_true = True
+        print("This is a LC file, questions are more than one.")
+
+    # Loop the answers and get the ids and the other keys.
+    # The values of the non id keys are combined into a single string.
+    answer_column_name = file_path + " answers"
+
+    answers_arr = []
+    counter = 0
+    for answer in answers:
+        curr_answer = []
+        curr_answer.append(answer["id"])
+        combined_text = ""
+        for key, value in answer.items():
+            counter += 1
+            print(counter)
+            if key != "id":
+                if lc_true:
+                    counter += 1
+                    print(counter)
+                    curr_answer.append(questions[counter % len(questions)])
+                combined_text += "".join(str(value)) + ""
+        curr_answer.append(combined_text.strip())
+        answers_arr.append(curr_answer)
+
+    answers_arr_df = pd.DataFrame(answers_arr, columns=["id", answer_column_name])
+    
+    return answers_arr_df"""

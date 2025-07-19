@@ -1,0 +1,246 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "Thread oluşturmanın 2 temel yöntemi nedir? Thread oluştururken lambda notasyonunun  kullanılabilmesi ne sağlar?",
+    "Data race problemi nedir, neden kaynaklanır?\nNasıl önüne geçilir?",
+    "Dead lock problemi nedir, neden kaynaklanır; bunun önüne geçebilmek için ne yapılabilir?",
+    "Bir threadi başlatmak için neden run metodu çağırılmamalı, açıklayınız. Peki hangi metot çağrılmalıdır?",
+    "Bir thread başka bir thread tarafından nasıl doğru bir şekilde sonlandırılabilir?",
+    "Java'da kaç çeşit thread vardır, farkları açıklayınız.",
+    "public class BankAccount {\n    private double balance;\n    \n    public void deposit(double amount) {\n        balance =  balance + amount; ;\n    }\n    \n    public void withdraw(double amount)\n        balance =  balance - amount ;\n    }\n    \n    public static void main(String[] args) {\n        BankAccount account = new BankAccount();\n        \n        Thread t1 = new Thread(() -> {\n            for (int i = 0; i < 3; i++) {\n                account.deposit(100);\n            }\n        });\n        \n        Thread t2 = new Thread(() -> {\n            for (int i = 0; i < 2; i++) {\n                account.withdraw(100);\n            }\n        });\n        \n        t1.start();\n        t2.start();\n    }\n}\n\nBu kodda bir problem var mı?\nVarsa bu problemi nasıl çözersiniz?\n(Varsa) Problemi çözdükten sonra program çalıştığında balance'nin son değeri ne olur?",
+    "class ThreadVisibility {\n    private static boolean flag = false;\n    private static int value = 0;\n   \n    public static void main(String[] args) throws InterruptedException {\n        Thread t1 = new Thread(() -> {\n            String name = Thread.currentThread().getName();\n            System.out.println(\"Started\");\n            while (!flag) {\n                try {\n                    Thread.sleep(100);\n                } catch (InterruptedException e) {\n                    e.printStackTrace();\n                }\n            }\n            System.out.println(name + value);\n        });\n        t1.setName(\"T2\");\n        t1.start();\n       \n        Thread.sleep(1000); // Give t1 time to start\n        value = 11;\n        synchronized (ThreadVisibility.class) {\n            flag = true;\n        }\n    }\n}\n\nOutput?"
+  ],
+  "answers": [
+    {
+      "id": "6194008",
+      "cevap1": "Bilmiyorum",
+      "cevap2": "Bilmiyorum",
+      "cevap3": "Bilmiyorum",
+      "cevap4": "Bilmiyorum",
+      "cevap5": "Bilmiyorum",
+      "cevap6": "User thread ve daemon thread vardır",
+      "cevap7": "Bilmiyorum",
+      "cevap8": "Bilmiyorum"
+    },
+    {
+      "id": "4380745",
+      "cevap1": "Thread nesnesi oluşturmak, anonim sınıf üzerinden lambda aracılığıyla üretmek",
+      "cevap2": "Threadler’in ortak kullanması gereken bir veri olduğu durumda ilk hangisnin çalışcağı durumdur",
+      "cevap3": "Birbirini bekleyen 2 thread’in birisi diğerinin lock’unu diğeri de diğerininkini kullandığı için asla wait durumundan çıkamadıkları durum",
+      "cevap4": "awake kullanılmalı. Run sistemi doğrudan çalıştırır awake ise gerektiği zaman uyandırır",
+      "cevap5": "Kill",
+      "cevap6": "2, top thread ve sub threads",
+      "cevap7": "Data race’e sebep olur. Daha sonra balance 100 olur",
+      "cevap8": "Hata"
+    },
+    {
+      "id": "8435496",
+      "cevap1": "Extend thread or implement runnable",
+      "cevap2": "Farklı threadin aynı anda bir data yazmaya veya okumaya çalışmasıda hangi threade öncelik verilecğinin belli olmaması.\nLock kullanarak",
+      "cevap3": "Threadlerin devam edebilmesi için koşuların döngü oluşturmasından.\nAynı data için farklı lock kullanılmayark",
+      "cevap4": "Run thread.start threadi açıp çağırdığı metot",
+      "cevap5": "Synchronized flag",
+      "cevap6": "2 \nThread\nDeamon, programın bitmesi için sonlanması gere kmez",
+      "cevap7": "Data race\nLocklar ile\n0",
+      "cevap8": "Started\nT211"
+    },
+    {
+      "id": "4731282",
+      "cevap1": "Threadi runnable interface'ini implement eden bir classtan veya lambda gösterimi ile oluştururuz. Lambda notasyonu thread için önemlidir.",
+      "cevap2": "İki thread aynı dataya erişip kullanmak istediğinde bu problem ortaya çıkar. Thread safety yöntemleri kullanılarak (lock, synchronized bloğu vs) önüne geçilebilir.",
+      "cevap3": "Deadlock, lock ile işi biten thread'in lock'u bırakmamasıdır. unlock metoduyla önüne geçilebilir.",
+      "cevap4": "run özellikle çağırılmaması gereken bir metoddur. Start ile thread başlatılınca run metodunu kendi içinde çağırır.",
+      "cevap5": "interrupt ile, durdurulursa en doğru şekilde sonlandırılır.",
+      "cevap6": "user ve daemon threadleri vardır. User threadlerinin işi bitmeden program sonlandırılamaz fakat daemon threadleri arkaplanda çalışır ve programın sonlandırılmasına etkisi yoktur.",
+      "cevap7": "data race problemi (iki threadin datalara aynı anda erişmeye çalışması) ortaya çıkar. Metodların headingine synchronized yazılırsa problem çalışır ve balance 100 olur.",
+      "cevap8": "Started\nT211"
+    },
+    {
+      "id": "1764665",
+      "cevap1": "Ya thread extend edilir ya da runnuble interface'i implement edilir. Lambdalar tek sefer kullanılacak fonksiyonların yazımını kolaylaştırır ve kodu kısaltır.",
+      "cevap2": "İki threadin aynı anda bir değişkene erişmesi ya da onu değiştirmek istemesi durumunda oluşur. Önüne geçmek için synchronized blokları kullanılır",
+      "cevap3": "Deadlock iki threadin bir birini beklemesi sonucunda süresiz olarak beklemeye girmeleridir. Çözmek için veri kullanımı beklemelerini kaldırmak gerekir.",
+      "cevap4": "Start cagrilmalidir. Eğer run çağrılırsa yeni thread oluşmaz",
+      "cevap5": "İnterrupt fonksiyonuyla",
+      "cevap6": "User thread ve deamon thread.",
+      "cevap7": "Race problem var. Balance iki farklı threadden kullanılmaya çalışılıyor. Çözmek için synchronized kullanılır. Çalıştığında balance 100 olur.",
+      "cevap8": "Started\nT211"
+    },
+    {
+      "id": "6275288",
+      "cevap1": "Birinci yöntem thread classını extend etmek, ikincisi runnable interfacesini implement etmek. Lambda notasyonları bize fonksiyonları parametre olarak kullanabilme imkanı verir. ",
+      "cevap2": "Bilmiyorum ",
+      "cevap3": "Bir thread bir locku alıp ikinci locku bekler. Diğer thread ikinci locku alıp birinciyi bekler ise gerçekleşir. Senkronize metodlar locklar ile çözülür. ",
+      "cevap4": "Start metodu çağırmalıyız. O run metodunu çağırır. ",
+      "cevap5": "İnterrupt metodu ile. ",
+      "cevap6": "2 user ve deamon. Deamon sonlandırılmaz. ",
+      "cevap7": "Evet aynı datayı ikisi de aynı anda değiştirebiliyor. Senkronize metodlar çözebilir. Balancenin son değeri 100 olur. ",
+      "cevap8": "Started T2 11"
+    },
+    {
+      "id": "1762204",
+      "cevap1": "1, runnable kullanıp onu thread'e vererek. 2, direkt olarak thread'e metodu vermek. Lambda notasyonu kullanmak bizi gereksiz ve uzun kod yazmaktan kurtarır. ",
+      "cevap2": "Birden fazla thread'in aynı değişkene aynı anda erişip değiştirmesinden kaynaklanır. Synchronized veya locklar kullanarak önüne geçebiliriz ",
+      "cevap3": "Bir thread ilk kilide sahipken ikinci kilidi almaya çalışırken, diğer thread'in de ikinci kilide sahipken birinci kilidi almaya çalışmasından ortaya çıkar. ",
+      "cevap4": "Run metodu ile metodu direkt çalıştırmış oluruz. Onun yerine start metodu ile thread oluşturarak çalıştırmalıyız. ",
+      "cevap5": "O thread'e interrupt sinyali göndererek doğru bir şekilde sonlandırabiliriz. ",
+      "cevap6": "User ve daemon thread olabilir. Program biterken user thread'lerin bitmesini bekleriz fakat daemon thread'leri beklemeyiz. Onlar background task'lardır. ",
+      "cevap7": "Sorun, thread'leri aynı anda aynı değişkenleri değiştirmek istediğinden kaynaklanır. Metotları synchronized yaparak bunun önüne geçebiliriz. ",
+      "cevap8": "Çıktısı:\nStarted\nT211"
+    },
+    {
+      "id": "7214465",
+      "cevap1": "Thread sınıfını extend ederek ve runnable arayüzünü implement ederek. Lambda notasyonu runnable gibi fonksiyonel arayüzlerle daha kısa ve okunabilir kod yazmayı sağlar.",
+      "cevap2": "Data race çoklu thread’in aynı veriye eşzamanlı erişmesiyle oluşan çakışma problemidir. Eş zamanlı erişimde senkronizasyon olmamasından kaynaklanır. synchronized, Lock veya thread-safe yapılar kullanılarak önlenebilir.",
+      "cevap3": "Deadlock iki veya daha fazla thread’in birbirini bekleyerek sonsuza kadar kilitlenmesi durumudur. Thread’lerin birbirinden bağımsız kilitleri ters sırayla almasından kaynaklanır. Deadlock algılama ve önleme stratejileri uygulayarak önüne geçilebilir.",
+      "cevap4": "run metodu doğrudan çağrılırsa yeni thread oluşturulmaz start metodu çağrılmalı",
+      "cevap5": "Thread içinde çalışan kod bir kontrol değişkenini kontrol eder. Dış thread bu değişkeni false yaparak thread’in kendi kendine güvenli şekilde durmasını sağlar.",
+      "cevap6": "2 çeşit User thread ve Daemon Thread . User Programın ana işleyişini yapar Daemon ise Arka planda çalışan servis threadidir",
+      "cevap7": "Problem var, deposit ve withdraw metotları senkronize değil bunları senkronize etmemiz lazım balance ın son değeri 100 olur",
+      "cevap8": 211
+    },
+    {
+      "id": "7817361",
+      "cevap1": "thread sınıfını extend eden bir sınıf oluşturup run() metodunu override ederek.Runnable arayüzünü uygulayarak.",
+      "cevap2": "birden fazla thread aynı veriyi okumaya çalışırsa oluşur.Senkronizasyon sağlanarak aynı anda tek thread'in okuması sağlanarak",
+      "cevap3": "bilmiyorum",
+      "cevap4": "start metodu çağırılmalıdır. Thread oluşmadan çağrısı yapıldığı için herhangi bir metod gibi çağırılır.",
+      "cevap5": "flag kullanılır. thread.stop() güvenli olmadığı için kullanılmamalıdır.",
+      "cevap6": "user ve daemon olmak üzere 2 tanedir.user ana işleri yaparken daemon destekleyici işleri yapar.",
+      "cevap7": "withdraw ve deposit metodları senkron edilmediği için hata oluşur. çıktı 100 olur.",
+      "cevap8": "A"
+    },
+    {
+      "id": "6897869",
+      "cevap1": "Thread classı extend etmek, Runnable interface i implement edip Thread constructor una parametre olarak vermek. Lambda notasyonu anlık olarak fonksiyon oluşturup kullanmayı sağlar.",
+      "cevap2": "Bir veriye aynı anda birden fazla threadin erişmeye çalışmasından kaynaklanır. Java nın senkronizasyon araçlarıyla syncronized keyword threadlerin wait notify metotlarıyla lock metoduyla önüne gecilir.",
+      "cevap3": "Thread lerin aynı anda kilitlenmesiyle tüm işlemlerin durması. Lock için farklı objeler kullanmak.",
+      "cevap4": "Run metodu herhangi bir metot gibi çağırılır. Start metodu çağırılınca thread başlar thread metotları üzerinde kullanılabilir.",
+      "cevap5": "Interrupt metodunu çağırarak",
+      "cevap6": "User thread ve daemon thread. Daemon threadler arka planda çalışır tüm user threadler sonlanınca daemon threadler de sonlanır.",
+      "cevap7": "Race case problemi olabilir. Threadler aynı anda balance ye erişmeye çalışır hesapta hata olur. Fonksiyonların başına syncronized yazılarak çözülebilir. Çıktı 100 olur.",
+      "cevap8": "."
+    },
+    {
+      "id": "5187413",
+      "cevap1": "Lambda notasyonu kullanabilmesi block seklinde kullanimi saglar",
+      "cevap2": "--",
+      "cevap3": "Eğer 2 tread arasında biri karşıdan almayı beklerken veriyor diğeri de diğer treadten almayı bekliyor ve veriyor ise aralarinda dead lock problemi olur",
+      "cevap4": "Thread kendi içinde run metotudunu cagiracagi icin basladiğında bizim ayrıca çağırmamıza gerek yok",
+      "cevap5": "--",
+      "cevap6": "--",
+      "cevap7": "Dead lock problemi var bunu cozmek icin senkronize block kullanabiliriz.0.",
+      "cevap8": "Started\nT2 0"
+    },
+    {
+      "id": "8059049",
+      "cevap1": "Thread sınıfını extend et\nRunnable ı implement et",
+      "cevap2": "İki Thread in aynı dataya ulaşmaya çalışması.",
+      "cevap3": "İki Thread in durmadan data beklemesi ",
+      "cevap4": "çünkü run değil start ile başlatılır",
+      "cevap5": "flag kullanarak olabilir",
+      "cevap6": "User ve Daemon threadleri",
+      "cevap7": "Var gibi ama emin değilim",
+      "cevap8": "Started\nT2"
+    },
+    {
+      "id": "1280995",
+      "cevap1": "Runnable'ı implement etmek veya Thread sınıfını extend etmek. Thread'in gerçekleştireceği fonksiyonun kolay şekilde ifade edilmesini. ",
+      "cevap2": "Thread'lerden hangisinin bir veriye diğerlerinden önce erişip, okuyup, değiştireceğinin bilinememesi. Senkronizasyon ile çözülür. ",
+      "cevap3": "Bir thread'in A kilidini alıp B kilidini beklemesi, diğer thread'in B kilidini alıp A kilidini beklemesi. Reentrant lock kullanılabilir. ",
+      "cevap4": "run metodu çağrılırsa main thread veya çağrıldığı thread'de, herhangi bir metod gibi execute edilir. Start metodu çağrılmalıdır. ",
+      "cevap5": "diğer thread içinde o thread'in stop metodu çağrılır. ",
+      "cevap6": "Daemon ve normal thread, Daemon thread'leri programın çalışması boyunca açık kalır. ",
+      "cevap7": "Thread'ler senkronize değil. Race problemi yaşanır. Çözmek için withdraw ve deposit metodlarını synchronized yapabiliriz. Son değer 100 olur. ",
+      "cevap8": "Started\nT211"
+    },
+    {
+      "id": "6914659",
+      "cevap1": "extends Thread ya da\nimplements Runnable",
+      "cevap2": "Aynı paylaşılan kaynağa (örneğin bir değişken) iki veya daha fazla thread'in aynı anda erişmesi sonucu tutarsız verilere yol açmasıdır. Synchronized kullanarak geçilir.",
+      "cevap3": "Dead lock problemi threadlerin birbirini bekleyip kilitlenerek sonsuza kadar durmasıdır. tryLock() wait() ve notify() kullanarak bunun önüne geçilebilir.",
+      "cevap4": "run() metodu threadi thread gibi değil, normal.bir metod gibi çağırır. Bu yüzden start() metodu çağırmalıyız.",
+      "cevap5": "interrput() veya isInterrupted()",
+      "cevap6": "User ve daemon threads. User kullanıcının gördüğü, daemon ise arka planda çalışan ve garbage işlerini yapan threaddir.",
+      "cevap7": "deposit() ve withdraw() metotları senkronize değil. Birden fazla thread aynı anda eriştiğinde data race oluşabilir. Synchronized ekleyerek duzeltebiliriz. Sonuç ise 100 olur.",
+      "cevap8": "Started\nT2 11"
+    },
+    {
+      "id": "6157698",
+      "cevap1": "Threadi oluşturulacak classın direk thread classını extends etmesi veya Runnable interface'ini implements etmesi. Lambda notasyonu ile yeni bir class açmadan Runnable'da kullanabiliriz",
+      "cevap2": "Birden fazla threadin aynı veriye ulaşmaya çalıştığında olur\n",
+      "cevap3": "Farklı methodlarda farklı lockların kullanılmasından dolayı birbirinin variable larına erişmek için diğer locku beklerken takılmalarıdır.",
+      "cevap4": "Run methodu çağırılırsa yeni bir thread açılmadan direk methodu çalıştırır. .start() methodu kullanılmalı",
+      "cevap5": ".interrupt() methodu ile",
+      "cevap6": "2 çeşit vardır. User ve daemon thread lerin farkı user threadlerin hepsi bittiğinde program sona erer ve daemon threadler durdurulur.",
+      "cevap7": "Programda hata vermeden çalışır ama sonucun ne olacağını bilemeyiz",
+      "cevap8": "Started\nT211"
+    },
+    {
+      "id": "9245287",
+      "cevap1": "Thread objesi ile oluşturulabilir. Lambda notosyonu ile yeni bir thread classindan obje oluşturmadan anonim olarak run metodu tanımlanır ",
+      "cevap2": "Ayni değişkenlere ulaşma çabası ",
+      "cevap3": "Bir thread çalışırken objeye bağlı olarak başka threadleri locklayabilir aynı şekilde çalışan threaddeki bir değişken aynı zamanda başka bir thread tarafından locklanabilir. Bu yüzden ikisi de locklanmis olacağından deadlock olur. Bir thread tamamen bitmeden diger bir thread baslamasin",
+      "cevap4": ".start() çağrılmali .run metodunu thread kendi çağıracak",
+      "cevap5": "Flagle sonlandırma ",
+      "cevap6": "Daemon ve angel ",
+      "cevap7": "Deposit ve withdraw metodlari sequantial çalışmalı bunun için syncronized keywordu eklenebilir çünkü aynı anda hem withdraw hem deposit yapmaya çalışırken doğru veriye erisemeyebilir",
+      "cevap8": "Started\nT2 11\n\nSonsuz döngü\nVeya\nT2 0"
+    },
+    {
+      "id": "9905145",
+      "cevap1": "bilmiyorum.",
+      "cevap2": "data race threadlerin ayni anda çalışmaya çalışmasından kaynaklanır. senkronize olarak açarsak classlari data race in önüne geçebiliriz böylelikle threadler sirayla çalışır.",
+      "cevap3": "dead lock senkronize yapmak icin kilit kullanırken bu kilidin işlevsiz hale gelip o fonksiyonun sonsuza kadar kilitlenmesi anlamına gelir bunun önüne geçmek icin try catch bloğu icinde senkronize işlemi yapılır ve finally bloğu ile lock serbest bırakılır.",
+      "cevap4": "threadi run metoduyla çağırmaya çalışırsak run metodunun içindeki her şeyi uygulaması gerekecek bunun yerine sadece threadi başlatmamız yeterlidir yani .start ile çağırmalıyız.",
+      "cevap5": "run metotdundaki her işlemi bittikten sonra durdurulup baska bir thread startlanabilir",
+      "cevap6": "2 çeşit thread var.",
+      "cevap7": "evet var threadler data race e girecekleri için deposit yapılmayan parayı çekmeye çalışılabilir bu yüzden deposit ve withdraw i senkronize  metot olarak açmalıyız ve içlerinde notify() ve wait() kullanmalıyız, bu düzeltmelerden sonra threadler birbirini bekleyerek sırayla çalıştığında balancenin son değeri 100 olur",
+      "cevap8": "T2 0"
+    },
+    {
+      "id": "5361565",
+      "cevap1": "threadi extend etmek veya runnableı implement etmek.Daha okunaklı ve kısa kod sağlar.",
+      "cevap2": "aynı veriye birden fazla thread ulaşmak istediğinde kaynaklanır ve lock sistemi ile önüne gecilir .",
+      "cevap3": "birden fazla threadin aynı locku beklemesi ve ilerleyememesi durumudur. trylock ile bunun önüne geçilebilir.",
+      "cevap4": "çünkü o zaman yeni bir thread başlamaz ve bu da bizim yapmaya çalıştığımız şeye engel olur.start() methodunu çağırmamız lazım.",
+      "cevap5": "Flag kullanarak.",
+      "cevap6": "iki çeşit thread vardır daemon ve user.Daemon arka planda çalışır daha çok.",
+      "cevap7": "problem aynı anda threadlerin erismeye çalışmasından kaynaklanır. bunu lock kullanarak çözebiliriz son değer de 100 olur.",
+      "cevap8": "started T211"
+    },
+    {
+      "id": "5628146",
+      "cevap1": "lambda durdurmak istersem ",
+      "cevap2": ".",
+      "cevap3": ".",
+      "cevap4": ".",
+      "cevap5": ".",
+      "cevap6": ".",
+      "cevap7": ".",
+      "cevap8": "."
+    },
+    {
+      "id": "5628146",
+      "cevap1": "thread sınıfını genişletmek ve ve runnable ı implemente etmek  veya okuma ve yazma işlemlerinin senkronize edilmemesi ",
+      "cevap2": "Çoklu thread'ler bir değişkene eşzamanlı eriştiğinde . Synchronized Blok Kullanımı ile olabilir",
+      "cevap3": "birden fazla thread'in birbirinden kaynak bekleyerek süresiz şekilde kilitlenmesi. Resource Ordering ile önlenebilir ",
+      "cevap4": "run() metodu normal bir metot gibi çalışır. Eğer run() doğrudan çağrılırsa, thread oluşturulmaz",
+      "cevap5": "Volatile Flag Kullanılabilir ",
+      "cevap6": "User Thread  ve  Daemon Thread. User varsayılan olarak oluşturulur Tüm kullanıcı thread'leri bitmeden program sona ermez. Daemon thread ise ana amacı kullanıcı thread'lerine destek sağlamaktır.",
+      "cevap7": "balance Değişkeninin erişimemem thread'ler senkronize edilmemiş synchronized Kullanımı ile çözebilirim output Final Balance: 100.0 olur 3 defa toplar 300 ekler 2 defa çıkarır 200 çıkarır 100 olur",
+      "cevap8": "11\nT2"
+    },
+    {
+      "id": "8857652",
+      "cevap1": "1)Thread sınıfını extend ederek\n2) Runnable interface'ini implement ederek\nLambda kullanmak Runnable fonksiyon gibi olduğu için okuması kolay ve kısa kod yazılmasını sağlar",
+      "cevap2": "senkronize olunamadığından kaynaklanır \nkod blokları synchronized yapılarak, ya da Lock mekanizmalarıyla çözülebilecektir",
+      "cevap3": "birden fazla thread hep birbirinden kilit bekler ve sonsuz bir bekleme durumuna geçilir\nsourcelara ters sırayla erişimden kaynaklanır\nönüne geçmek için hep aynı sırayla erişim, timeout ya da tryLock mekanizmalı kilit kontrolü yapabiliriz",
+      "cevap4": "run metodunu doğrudan çağıramayız çünkü önce (yeni )thread oluşturmak gereklidir yani kod mevcut thread içinde çalışır direkt\nyeni thread başlatmak için start() methodu kullanılır",
+      "cevap5": "doğrudan değil de flag atayarak yapabilir volatile boolean ya da interrupt metodu kullanıcaz ama o zaman da threadin kendisi kendini sonlandırmış olur",
+      "cevap6": "2 çeşit : daemon ve user\n\ndaemon arka planda çalışır (garbage collection mesela)\nuser threadler bitince program sonlanır\nuser threadler de zaten uygulamamızın ana işlevlerini yerine getirir (main gibi)",
+      "cevap7": "threadler aynı anda iş yapacağında ötürü data race oluşcaktır o yüzden withdraw ve deposit methodlarına synchronized keywordü eklenmelidir\nçıktı: 100.0",
+      "cevap8": "Started\nT211\n\n(ama kesin değil olasılıklardan biri)"
+    }
+  ]
+}

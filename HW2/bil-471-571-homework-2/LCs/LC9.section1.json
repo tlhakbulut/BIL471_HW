@@ -1,0 +1,114 @@
+{
+  "questions": [
+    "Öğrenci No.",
+    "ArrayList ve LinkedList veri yapılarını kıyaslayınız, aralarındaki farkları açıklayınız.",
+    "Collections interfacesindeki metotlar temel olarak hangi işlevleri yerine getiriyor?",
+    "Kendi yazdığınız bir classta veri yapilarını istenilen şekilde (mesela HashSet'te duplicate objelerin olmamasi) kullanabilmek için Object classının hangi metotlarını override etmek gerekir, neden?",
+    "Bir dijital kütüphane uygulaması geliştiriyorsunuz. Bu uygulamada, öğrenciler araştırma projeleri için kaynak ekliyor ve sistem, en son eklenen kaynağı ilk olarak görüntülemek üzere tasarlanıyor. Öğrenciler, ekledikleri kaynakların boyut sırasına göre tekrar gözden geçebilmek istiyorlar. Bu durumda, hangi veri yapısını tercih edersiniz? Neden?",
+    "FIFO nedir, açıklayınız ve aşağıdakı veri yapılarını FIFO/LIFO şeklinde sınıflandırınız:\nStack\nQueue\nMap\nPriorityQueue",
+    "public class Demo {\n    public static void main(String[] args) {\n        Stack<Integer> stack = new Stack<>();\n\n        stack.push(10);\n        stack.push(20);\n        stack.push(30);\n\n        System.out.println(stack.pop());\n        System.out.println(stack.peek());\n        System.out.println(stack.pop());\n    }\n}\n\nOutput?",
+    "public class Test {\n    public static void main(String[] args) {\n        Map<String, Integer> scores = new HashMap<>();\n\n        scores.put(\"Alice\", 95);\n        scores.put(\"Bob\", 85);\n        scores.put(\"Charlie\", 90);\n        scores.put(\"Alice\", 100);\n\n        System.out.println(scores.get(\"Alice\"));\n        System.out.println(scores.size());\n    }\n}\n\nOutput?"
+  ],
+  "answers": [
+    {
+      "id": "6275288",
+      "cevap1": "ArrayList erişimde daha hızlı iken LinkedList ekleme ve çıkarma için daha uygun. ",
+      "cevap2": "Add remove contains",
+      "cevap3": "Contains",
+      "cevap4": "Stack",
+      "cevap5": "Fırst in first out ilk eklenen ilk remove edilendir. \nStack fifo queue lifo Map ve Priorityqueuenin farklı. ",
+      "cevap6": "true 20 true",
+      "cevap7": "100 3"
+    },
+    {
+      "id": "4380745",
+      "cevap1": "Arraylist’e index ile doğrudan erişilebilir. Linkedlist elemanlarına sırasıyla erişilebiliyor.",
+      "cevap2": "Ekleme çıkarma gibi temel list işlemlerini.",
+      "cevap3": "Hashcode override edilmeli ki iki nesneyi neye göre kıyaslayacağını kod bilebilsin",
+      "cevap4": "Stack kullanırım",
+      "cevap5": "First in first out, \nLifo\nFifo\nFifo\nFifo\n",
+      "cevap6": "30\n20\n20",
+      "cevap7": "95\n4"
+    },
+    {
+      "id": "8190737",
+      "cevap1": "arraylist arraydir. veriler memoryde ardışıktır. linkedlistte veriler ardışık değildir. pointerla sonraki veriye geçilir",
+      "cevap2": "ekleme çıkarma var mı diye kontrol etme boyut verme vb",
+      "cevap3": "add, remove check",
+      "cevap4": "stack",
+      "cevap5": "first in first out\nlifo, fifo, ikisi de değil, ikisi de değil",
+      "cevap6": "30 20 20",
+      "cevap7": "100 3"
+    },
+    {
+      "id": "4779274",
+      "cevap1": "arraylist direkt array oluşturur genişletir linked list birbirine bağlı esnek",
+      "cevap2": "herangi bi collectionun yapması gerekenler işte eleman ekleme silme vs vs",
+      "cevap3": "equals, toString belki ne bilm",
+      "cevap4": "stack veri yapısını twrcih ederdim çünkü lifo. ",
+      "cevap5": "fifo firs in first out ilk giren ilk çıkar. Stack lifo queue fifo map lifo priorityqueue ikisi de deil.",
+      "cevap6": "30\n10",
+      "cevap7": "95\n4"
+    },
+    {
+      "id": "6194008",
+      "cevap1": "Linkedlistte elemanlar birbirine nodelarla bağlantı yapar öbüründe normaldir",
+      "cevap2": "İçindeki elemanları alma set etme boyutunu gösterme vs işlevleri yerine getirirler",
+      "cevap3": "Bilmiyorum",
+      "cevap4": "Stack",
+      "cevap5": "Unutmuşum her şeyi",
+      "cevap6": "30\n10",
+      "cevap7": "100\n3"
+    },
+    {
+      "id": "8783086",
+      "cevap1": "linkedlist ekleme işi daha az maliyetliyken arraylistte random access daha az maliyetli",
+      "cevap2": "ulaşma belirleme get set",
+      "cevap3": "get set",
+      "cevap4": "Stack çünkü stackte son eklenen ilk çıkıyor",
+      "cevap5": "fifo da eklenme sırasına göre \n\nfifo:stack Queyue priorityqueue\nlifo: map",
+      "cevap6": "30\n20\n20",
+      "cevap7": "95\n3"
+    },
+    {
+      "id": "8435496",
+      "cevap1": "Array list arka planda dynamically sized arrayde, LinkedList linked listte tutulur. Ekleme  çıkarma linked listte daha hızlı, erişim array listte daha hızlı",
+      "cevap2": "Add remove addall clear",
+      "cevap3": "Add addall",
+      "cevap4": "Priority Queue\nGiriş sırasını ve boyut açısından sıralanması lazım",
+      "cevap5": "Fifo da ilk giren ilk çıkar. Stack lifo queue fifo, map map te sıra yok priority queue fifo",
+      "cevap6": "30\n20\n20",
+      "cevap7": "95\n4"
+    },
+    {
+      "id": "4731282",
+      "cevap1": "ArrayList Random access için daha verimlidir. Linked list'in search hızı daha verimlidir. ",
+      "cevap2": "veriyi alma, veriyi yerleştirme, verileri değiştirme gibi collection'daki verilerle alakalı işlevleri yerine getirir.",
+      "cevap3": "add, addAll ve set metodunu override etmek gerekir çünkü eklemeyi belli kriterlere göre yapmamız gerekir",
+      "cevap4": "En son eklenen kaynağı ilk olarak görüntülemek için stack kullanılmalı. Boyut sırasına göre gözden geçirebilmek için map tarzı bir veri tipi kullanılabilir.",
+      "cevap5": "FIFO (First in first out) ilk gelen verinin ilk pop'lanan veri olması anlamına gelir.\nStack LIFO\nQueue FIFO\nMap LIFO\nPQueue priority'e bağlı yani LIFO veya FIFO denemez.",
+      "cevap6": "30 \n20\n20",
+      "cevap7": "95\n4"
+    },
+    {
+      "id": "1762204",
+      "cevap1": "Array list'te erişim o(1) sürerken araya eleman eklemek, kaydırma gerektiğinden o(n) sürer. LinkedList'te ise erişim o(n) sürerken araya eleman eklemek için kaydırma yapmamız gerekmez, ekleyeceğimiz yere kadar gitmemiz ve oraya eklememiz o(n) sürer. ",
+      "cevap2": "Collection içerisindeki datalar üzerinde işlem yapmamıza olanak sağlıyor. Eleman ekleme, silme, iterate etme gibi işlevleri yerine getirir. ",
+      "cevap3": "Veri yapısına eleman ekleyen metotları istenilen şekilde modifiye etmemiz gerekir. add, addAll gibi metotları değiştirmemiz gerekir. ",
+      "cevap4": "Stack kullanarak last in first out yapabiliriz. Bu sayede son eklenen ilk gözükür. Fakat sıralama yapmayı kolaylaştırmak için de priority queue en mantıklısıdır ",
+      "cevap5": "Fifo, ilk girenin ilk çıktığı sistemdir. First in first out. Stack: LIFO, Queue: FIFO, Map: ikisi de değil, Priority Queue: ikisi de değil ",
+      "cevap6": "30\n20\n20",
+      "cevap7": "100\n3"
+    },
+    {
+      "id": "6897869",
+      "cevap1": "Arraylist elemanlarına erişmek ve değiştirmek kolaydır. Linked liste eleman eklemek ve çıkarmak kolaydır.",
+      "cevap2": "Collection a eleman eklemek çıkarmak değiştirmek, elemanları sırasıyla gezmek.",
+      "cevap3": "Equals metodu. Çünkü collection fonksiyonları object classının equals metodunu kullanıyor.",
+      "cevap4": "Priority queue. Filo mantığı kullanılır. Elemanlar belli bir düzene göre sıralanabilir.",
+      "cevap5": "Fifo ilk eklenen elemanı  ilk çıktığı düzen . Filo ilk eklenen elemanın en son çıktığı düzen. Stack filo queue fifo.",
+      "cevap6": "30\n20\n20",
+      "cevap7": "100\n3"
+    }
+  ]
+}
